@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Painel do Feirante - Feira da Lua</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        .cosmic-bg {
+            background-color: #0d0a17;
+            background-image: radial-gradient(circle at 15% 50%, rgba(76, 29, 149, 0.1), transparent 25%),
+                              radial-gradient(circle at 85% 30%, rgba(245, 158, 11, 0.05), transparent 25%);
+        }
+        ::-webkit-scrollbar { width: 8px; height: 8px; }
+        ::-webkit-scrollbar-track { background: #0d0a17; }
+        ::-webkit-scrollbar-thumb { background: #334155; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #475569; }
+    </style>
+</head>
+<body class="cosmic-bg text-slate-200 min-h-screen pb-24 md:pb-12">
+
+    <!-- Navbar Superior (Idêntica à do Admin) -->
+    <nav class="bg-[#141021] border-b border-slate-800 p-4 sticky top-0 z-50 shadow-lg shadow-black/50">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
+            <!-- Logo -->
+            <div class="flex items-center gap-3 w-full md:w-auto justify-between md:justify-start">
+                <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 rounded-full bg-yellow-500 flex items-center justify-center text-[#141021] font-bold text-xl shadow-[0_0_15px_rgba(234,179,8,0.4)]">
+                        🌙
+                    </div>
+                    <div>
+                        <h1 class="font-bold text-lg leading-tight text-white">FEIRA DA <span class="text-yellow-400">LUA</span></h1>
+                        <p class="text-xs text-slate-400">Área do Feirante</p>
+                    </div>
+                </div>
+                <!-- Botão Sair (Visível apenas no mobile no topo) -->
+                <button class="md:hidden text-red-400 hover:text-red-300 flex items-center gap-1 border border-red-500/30 px-3 py-2 rounded-lg transition-colors text-xs font-medium">
+                    Sair
+                </button>
+            </div>
+            
+            <!-- Menu Desktop -->
+            <div class="hidden md:flex items-center gap-2 md:gap-6 text-sm font-medium">
+                <a href="#" class="text-yellow-400 bg-yellow-500/10 px-4 py-2 rounded-lg flex items-center gap-2 transition-colors border border-yellow-500/20">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path></svg>
+                    Início
+                </a>
+                <a href="#" class="text-slate-400 hover:text-white flex items-center gap-2 transition-colors">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
+                    Extrato
+                </a>
+                <a href="#" class="text-slate-400 hover:text-white flex items-center gap-2 transition-colors">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path></svg>
+                    Meus Dados
+                </a>
+                <button class="text-red-400 hover:text-red-300 flex items-center gap-1 border border-red-500/30 px-3 py-2 rounded-lg transition-colors ml-2">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"></path></svg>
+                    Sair
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <main class="max-w-7xl mx-auto p-4 md:p-6 space-y-8 mt-2">
+        
+        <!-- Cabeçalho da Página -->
+        <div class="flex flex-col md:flex-row justify-between items-start md:items-end gap-4">
+            <div>
+                <h2 class="text-2xl md:text-3xl font-bold text-white flex items-center gap-2">
+                    Olá, Batata Frita! 👋
+                </h2>
+                <p class="text-sm text-slate-400 mt-1">Bem-vindo ao seu painel. Confira seu saldo, avisos e histórico de participações.</p>
+            </div>
+        </div>
+
+        <!-- Cards KPI (Resumo Financeiro) -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <!-- Saldo Pendente (Destaque) -->
+            <div class="bg-[#1a162c] border border-red-500/30 rounded-xl p-5 relative overflow-hidden">
+                <div class="absolute inset-0 bg-red-500/5"></div>
+                <p class="text-xs text-slate-400 uppercase tracking-wider mb-1 relative z-10 flex items-center gap-2">
+                    <svg class="w-4 h-4 text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                    Saldo Pendente Total
+                </p>
+                <p class="text-3xl font-bold text-red-400 relative z-10">R$ 95,00</p>
+                <p class="text-xs text-slate-500 mt-2 relative z-10">Taxa (R$55) + Mesas (R$40)</p>
+            </div>
+
+            <!-- Próxima Feira -->
+            <div class="bg-[#1a162c] border border-slate-800 rounded-xl p-5">
+                <p class="text-xs text-slate-400 uppercase tracking-wider mb-1 flex items-center gap-2">
+                    <svg class="w-4 h-4 text-yellow-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+                    Próxima Feira
+                </p>
+                <p class="text-2xl font-bold text-white">29/10/2026</p>
+                <p class="text-xs text-slate-500 mt-2">Local: Praça Central</p>
+            </div>
+
+            <!-- Status / Última Feira -->
+            <div class="bg-[#1a162c] border border-slate-800 rounded-xl p-5">
+                <p class="text-xs text-slate-400 uppercase tracking-wider mb-1 flex items-center gap-2">
+                    <svg class="w-4 h-4 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                    Última Participação
+                </p>
+                <p class="text-2xl font-bold text-emerald-400">Presente</p>
+                <p class="text-xs text-slate-500 mt-2">22/10/2026 • Pago via Pix</p>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+            
+            <!-- Detalhamento do Valor Pendente -->
+            <div class="bg-[#141021] border border-slate-800 rounded-2xl overflow-hidden flex flex-col">
+                <div class="p-5 border-b border-slate-800 flex justify-between items-center bg-[#1a162c]/50">
+                    <h3 class="text-lg font-bold text-white flex items-center gap-2">
+                        <span class="text-red-400 text-xl">!</span> Detalhamento do Saldo
+                    </h3>
+                </div>
+                <div class="p-0 flex-grow">
+                    <table class="w-full text-sm text-left">
+                        <thead class="text-xs text-slate-400 bg-[#1a162c]">
+                            <tr>
+                                <th class="px-5 py-3 font-medium">Descrição</th>
+                                <th class="px-5 py-3 font-medium text-right">Valor</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-slate-800/50">
+                            <tr>
+                                <td class="px-5 py-4">
+                                    <p class="font-semibold text-white">Taxa da Feira (29/10)</p>
+                                    <p class="text-xs text-slate-500">Presença confirmada</p>
+                                </td>
+                                <td class="px-5 py-4 text-right font-bold text-white">R$ 55,00</td>
+                            </tr>
+                            <tr>
+                                <td class="px-5 py-4">
+                                    <p class="font-semibold text-white">Locação de Mesas</p>
+                                    <p class="text-xs text-slate-500">2 unidades solicitadas</p>
+                                </td>
+                                <td class="px-5 py-4 text-right font-bold text-white">R$ 40,00</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="p-5 border-t border-slate-800 bg-[#1a162c]/30 flex justify-between items-center">
+                    <span class="text-sm font-bold text-slate-300">Total a pagar:</span>
+                    <span class="text-lg font-bold text-red-400">R$ 95,00</span>
+                </div>
+            </div>
+
+            <!-- Instruções de Pagamento (Pix) -->
+            <div class="bg-[#141021] border border-slate-800 rounded-2xl p-5 flex flex-col justify-center relative overflow-hidden">
+                <div class="absolute -right-4 -top-4 opacity-5 text-8xl">💸</div>
+                <h3 class="text-lg font-bold text-white mb-2 flex items-center gap-2">
+                    <svg class="w-5 h-5 text-yellow-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"></path></svg>
+                    Como acertar seu saldo?
+                </h3>
+                <p class="text-sm text-slate-400 mb-6">Você pode acertar diretamente com a organização no dia da feira ou realizar um Pix para a chave abaixo:</p>
+                
+                <div class="bg-[#0d0a17] border border-slate-700 rounded-xl p-4 flex flex-col md:flex-row items-center justify-between gap-4">
+                    <div>
+                        <p class="text-xs text-slate-500 mb-1">Chave Pix (E-mail)</p>
+                        <p class="text-sm font-mono text-yellow-400">financeiro@feiradalua.com</p>
+                    </div>
+                    <button onclick="navigator.clipboard.writeText('financeiro@feiradalua.com'); alert('Chave Pix copiada!')" class="w-full md:w-auto bg-yellow-500 hover:bg-yellow-400 text-[#141021] font-bold py-2 px-6 rounded-lg transition-colors flex items-center justify-center gap-2 shadow-[0_4px_14px_0_rgba(234,179,8,0.2)]">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg>
+                        Copiar
+                    </button>
+                </div>
+                <p class="text-xs text-slate-500 mt-4 text-center">Após o pagamento, envie o comprovante para a organização.</p>
+            </div>
+        </div>
+
+        <!-- Histórico de Pagamentos -->
+        <div class="bg-[#141021] border border-slate-800 rounded-2xl overflow-hidden mt-6">
+            <div class="p-5 border-b border-slate-800 flex justify-between items-center">
+                <h3 class="text-lg font-bold text-white flex items-center gap-2">
+                    <svg class="w-5 h-5 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
+                    Meus Últimos Pagamentos
+                </h3>
+            </div>
+            <div class="overflow-x-auto">
+                <table class="w-full text-sm text-left">
+                    <thead class="text-xs text-slate-400 uppercase bg-[#1a162c]">
+                        <tr>
+                            <th class="px-6 py-4 font-medium">Data</th>
+                            <th class="px-6 py-4 font-medium">Referente a</th>
+                            <th class="px-6 py-4 font-medium">Forma Pgto</th>
+                            <th class="px-6 py-4 font-medium text-right">Valor</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-slate-800/50">
+                        <tr class="hover:bg-slate-800/20 transition-colors">
+                            <td class="px-6 py-4 text-slate-300">22/10/2026</td>
+                            <td class="px-6 py-4 font-semibold text-white">Taxa da Feira</td>
+                            <td class="px-6 py-4"><span class="text-xs bg-blue-500/10 text-blue-400 px-2 py-1 rounded">Pix</span></td>
+                            <td class="px-6 py-4 text-right font-bold text-emerald-400">R$ 55,00</td>
+                        </tr>
+                        <tr class="hover:bg-slate-800/20 transition-colors">
+                            <td class="px-6 py-4 text-slate-300">15/10/2026</td>
+                            <td class="px-6 py-4 font-semibold text-white">Taxa da Feira</td>
+                            <td class="px-6 py-4"><span class="text-xs bg-emerald-500/10 text-emerald-400 px-2 py-1 rounded">Dinheiro</span></td>
+                            <td class="px-6 py-4 text-right font-bold text-emerald-400">R$ 55,00</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Menu de Navegação Inferior (Apenas Mobile) -->
+    <nav class="md:hidden fixed bottom-0 w-full bg-[#141021]/95 backdrop-blur-md border-t border-slate-800 flex justify-around p-3 pb-safe z-50">
+        <a href="#" class="flex flex-col items-center text-yellow-500">
+            <svg class="w-6 h-6 mb-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path></svg>
+            <span class="text-[10px] font-medium">Início</span>
+        </a>
+        <a href="#" class="flex flex-col items-center text-slate-400 hover:text-white transition-colors">
+            <svg class="w-6 h-6 mb-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
+            <span class="text-[10px] font-medium">Extrato</span>
+        </a>
+        <a href="#" class="flex flex-col items-center text-slate-400 hover:text-white transition-colors">
+            <svg class="w-6 h-6 mb-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path></svg>
+            <span class="text-[10px] font-medium">Perfil</span>
+        </a>
+    </nav>
+
+</body>
+</html>
