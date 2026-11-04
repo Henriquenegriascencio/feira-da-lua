@@ -1,6 +1,27 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
+    <script>
+        async function protectFeirantePage() {
+          const { data: { session } } = await supabaseClient.auth.getSession();
+          if (!session) {
+            window.location.href = 'index.html'; // Não está logado, volta para o login
+            return;
+          }
+          // Opcional: você pode querer buscar o nome do feirante para exibir na tela
+          const { data: profile } = await supabaseClient
+            .from('profiles')
+            .select('name')
+            .eq('id', session.user.id)
+            .single();
+            
+          if (profile) {
+              // Exemplo: Atualiza um elemento com o nome do feirante
+              // document.getElementById('nome-feirante').innerText = profile.name;
+          }
+        }
+        protectFeirantePage();
+      </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Painel do Feirante - Feira da Lua</title>
@@ -226,6 +247,11 @@
             <span class="text-[10px] font-medium">Perfil</span>
         </a>
     </nav>
-
+    <script>
+        document.querySelector('button.text-red-400').addEventListener('click', async () => {
+          await supabaseClient.auth.signOut();
+          window.location.href = 'index.html';
+        });
+      </script>
 </body>
 </html>

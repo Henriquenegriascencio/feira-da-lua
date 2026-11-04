@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login - Feira da Lua</title>
@@ -127,24 +128,63 @@
         </div>
     </div>
 
-    <!-- Script para Mostrar/Ocultar Senha -->
-    <script>
-        const togglePassword = document.querySelector('#togglePassword');
-        const password = document.querySelector('#password');
-        const eyeIcon = document.querySelector('#eyeIcon');
-
-        togglePassword.addEventListener('click', function (e) {
-            // Alterna o tipo do input
-            const type = password.getAttribute('type') === 'password' ? 'text' : 'password';
-            password.setAttribute('type', type);
-            
-            // Altera o ícone (olho aberto / olho cortado)
-            if(type === 'text') {
-                eyeIcon.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.875 18.825A10.05 10.05 0 0112 19c-4.478 0-8.268-2.943-9.543-7a9.97 9.97 0 011.563-3.029m5.858.908a3 3 0 114.243 4.243M9.878 9.878l4.242 4.242M9.88 9.88l-3.29-3.29m7.532 7.532l3.29 3.29M3 3l3.59 3.59m0 0A9.953 9.953 0 0112 5c4.478 0 8.268 2.943 9.543 7a10.025 10.025 0 01-4.132 5.411m0 0L21 21"></path>';
-            } else {
-                eyeIcon.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path>';
+    <<script>
+        document.addEventListener('DOMContentLoaded', () => {
+          // ... (código do togglePassword permanece aqui) ...
+      
+          const loginForm = document.querySelector('form');
+      
+          loginForm.addEventListener('submit', async (e) => {
+            e.preventDefault(); // Impede o recarregamento da página
+      
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            const submitButton = loginForm.querySelector('button[type="submit"]');
+            const originalButtonText = submitButton.innerHTML;
+      
+            submitButton.innerHTML = 'Entrando...';
+            submitButton.disabled = true;
+      
+            try {
+              // 1. Tenta fazer o login com e-mail e senha
+              const { data: authData, error: authError } = await supabaseClient.auth.signInWithPassword({
+                email: email,
+                password: password,
+              });
+      
+              if (authError) throw authError;
+      
+              // 2. Busca o perfil do usuário na tabela 'profiles' para saber o 'role'
+              const { data: profile, error: profileError } = await supabaseClient
+                .from('profiles')
+                .select('role')
+                .eq('id', authData.user.id)
+                .single();
+      
+              if (profileError) throw profileError;
+      
+              // 3. Redireciona com base no 'role'
+              if (profile.role === 'admin') {
+                window.location.href = 'admin.html';
+              } else {
+                window.location.href = 'feirante.html';
+              }
+      
+            } catch (error) {
+              console.error('Erro no login:', error.message);
+              alert('Falha no login: ' + error.message);
+              submitButton.innerHTML = originalButtonText;
+              submitButton.disabled = false;
             }
+          });
         });
-    </script>
+      </script>
+    <script>
+        const SUPABASE_URL = 'https://jpkeqklawvmunsvzjvdr.supabase.co';
+        const SUPABASE_ANON_KEY = 'sb_publishable_vLcgMhZnYNBsIjkooBb8_w_53AFsVQq';
+      
+        const { createClient } = supabase;
+        const supabaseClient = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+      </script>
 </body>
 </html>

@@ -1,6 +1,25 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
+    <script>
+        async function protectAdminPage() {
+          const { data: { session } } = await supabaseClient.auth.getSession();
+          if (!session) {
+            window.location.href = 'index.html'; // Não está logado, volta para o login
+            return;
+          }
+          const { data: profile } = await supabaseClient
+            .from('profiles')
+            .select('role')
+            .eq('id', session.user.id)
+            .single();
+      
+          if (profile?.role !== 'admin') {
+            window.location.href = 'feirante.html'; // Não é admin, manda para o painel dele
+          }
+        }
+        protectAdminPage();
+      </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Painel Administrativo - Feira da Lua</title>
@@ -382,5 +401,11 @@
         </div>
 
     </main>
+    <script>
+        document.querySelector('button.text-red-400').addEventListener('click', async () => {
+          await supabaseClient.auth.signOut();
+          window.location.href = 'index.html';
+        });
+      </script>
 </body>
 </html>
