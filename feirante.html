@@ -1,6 +1,15 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script>
+  // Substitua pelas suas credenciais reais
+  const SUPABASE_URL = 'https://jpkeqklawvmunsvzjvdr.supabase.co';
+  const SUPABASE_ANON_KEY = 'sb_publishable_vLcgMhZnYNBsIjkooBb8_w_53AFsVQq';
+
+  const { createClient } = supabase;
+  const supabaseClient = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+</script>
     <script>
         async function protectFeirantePage() {
           const { data: { session } } = await supabaseClient.auth.getSession();
