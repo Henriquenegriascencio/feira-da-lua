@@ -1,15 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-<script>
-  // Substitua pelas suas credenciais reais
-  const SUPABASE_URL = 'https://jpkeqklawvmunsvzjvdr.supabase.co';
-  const SUPABASE_ANON_KEY = 'sb_publishable_vLcgMhZnYNBsIjkooBb8_w_53AFsVQq';
-
-  const { createClient } = supabase;
-  const supabaseClient = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
-</script>
     <script>
         async function protectFeirantePage() {
           const { data: { session } } = await supabaseClient.auth.getSession();
@@ -262,5 +253,54 @@
           window.location.href = 'index.html';
         });
       </script>
+      <script>
+  // Seleciona todos os botões que tenham a palavra "Sair" ou a classe de logout
+  // (Você pode adicionar a classe "btn-logout" nos seus botões para facilitar)
+  const logoutButtons = document.querySelectorAll('button.text-red-400'); 
+
+  logoutButtons.forEach(btn => {
+    btn.addEventListener('click', async (e) => {
+      e.preventDefault();
+      
+      // Encerra a sessão no Supabase
+      const { error } = await supabaseClient.auth.signOut();
+      
+      if (error) {
+        alert('Erro ao sair: ' + error.message);
+      } else {
+        // Redireciona para a tela de login
+        window.location.href = 'index.html';
+      }
+    });
+  });
+</script>
+    <!-- (Seu menu inferior continua aqui em cima) -->
+
+    <!-- COLE ISSO NO FINAL DO ARQUIVO, ANTES DE </body> -->
+    
+    <!-- 1. Inicializar Supabase -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script>
+        const SUPABASE_URL = 'https://jpkeqklawvmunsvzjvdr.supabase.co';
+        const SUPABASE_ANON_KEY = 'sb_publishable_vLcgMhZnYNBsIjkooBb8_w_53AFsVQq';
+        const { createClient } = supabase;
+        const supabaseClient = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+    </script>
+
+    <!-- 2. Lógica de Sair -->
+    <script>
+        // Seletor para pegar qualquer botão que tenha a classe 'btn-sair' (para funcionar no PC e no Celular)
+        const botoesSair = document.querySelectorAll('.btn-sair');
+        
+        botoesSair.forEach(botao => {
+            botao.addEventListener('click', async (e) => {
+                e.preventDefault();
+                await supabaseClient.auth.signOut();
+                window.location.href = 'index.html';
+            });
+        });
+    </script>
+</body>
+</html>
 </body>
 </html>
