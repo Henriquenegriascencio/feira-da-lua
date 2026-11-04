@@ -1,6 +1,15 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script>
+  // Substitua pelas suas credenciais reais
+  const SUPABASE_URL = 'https://jpkeqklawvmunsvzjvdr.supabase.co';
+  const SUPABASE_ANON_KEY = 'sb_publishable_vLcgMhZnYNBsIjkooBb8_w_53AFsVQq';
+
+  const { createClient } = supabase;
+  const supabaseClient = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+</script>
     <script>
         async function protectAdminPage() {
           const { data: { session } } = await supabaseClient.auth.getSession();
@@ -407,5 +416,77 @@
           window.location.href = 'index.html';
         });
       </script>
+      <script>
+  async function carregarTabelaAdmin() {
+    // 1. Busca os dados do banco
+    const { data: feirantes, error } = await supabaseClient
+      .from('financeiro')
+      .select('*');
+
+    if (error) {
+      console.error('Erro ao buscar dados:', error);
+      return;
+    }
+
+    // 2. Pega a tabela do HTML
+    const tbody = document.querySelector('tbody');
+    
+    // 3. Limpa a tabela (apaga os dados falsos que estão no HTML)
+    tbody.innerHTML = '';
+
+    // 4. Monta a tabela nova com os dados do banco
+    feirantes.forEach(f => {
+      const isPago = f.status_pagamento === 'pago';
+      
+      const tr = document.createElement('tr');
+      tr.className = 'hover:bg-slate-800/20 transition-colors';
+      
+      tr.innerHTML = `
+        <td class="px-6 py-4 flex items-center gap-3">
+            <div class="w-8 h-8 rounded-full bg-yellow-500/20 text-yellow-500 flex items-center justify-center font-bold">
+                ${f.feirante_nome.charAt(0)}
+            </div>
+            <div>
+                <p class="font-semibold text-white">${f.feirante_nome}</p>
+                <p class="text-xs text-slate-500">Geral</p>
+            </div>
+        </td>
+        <td class="px-6 py-4 text-emerald-400 font-medium">Presente</td>
+        <td class="px-6 py-4">
+            ${isPago 
+                ? `<span class="text-${f.forma_pagamento === 'pix' ? 'blue' : 'yellow'}-400 font-bold text-xs uppercase">${f.forma_pagamento}</span>` 
+                : '<span class="text-slate-500 text-xs">---</span>'
+            }
+        </td>
+        <td class="px-6 py-4 font-bold text-white">R$ ${f.valor_taxa.toFixed(2).replace('.', ',')}</td>
+        <td class="px-6 py-4 text-right">
+            ${isPago 
+                ? `<span class="inline-flex items-center gap-1 bg-emerald-500/10 text-emerald-400 text-xs px-2.5 py-1 rounded-md border border-emerald-500/20">✓ Quitado</span>`
+                : `<button class="bg-yellow-500 hover:bg-yellow-400 text-[#141021] text-xs font-bold px-3 py-1.5 rounded-md transition-colors" onclick="receberPagamento(${f.id})">Receber</button>`
+            }
+        </td>
+      `;
+      tbody.appendChild(tr);
+    });
+  }
+
+  // Chama a função quando a página carregar
+  carregarTabelaAdmin();
+
+  // Função para o botão "Receber" funcionar
+  window.receberPagamento = async function(id) {
+    const { error } = await supabaseClient
+      .from('financeiro')
+      .update({ status_pagamento: 'pago', forma_pagamento: 'dinheiro' })
+      .eq('id', id);
+
+    if (!error) {
+        alert('Pagamento registrado!');
+        carregarTabelaAdmin(); // Recarrega a tabela para atualizar a tela
+    } else {
+        alert('Erro ao registrar pagamento.');
+    }
+  }
+</script>
 </body>
 </html>
