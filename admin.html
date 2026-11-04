@@ -71,6 +71,74 @@
                 </select>
             </div>
 
+            <!-- Botão na tela -->
+<button onclick="abrirModalDespesa()" class="bg-slate-800 text-white px-3 py-1.5 rounded text-xs">+ Adicionar Despesa</button>
+
+<!-- Modal (Escondido por padrão) -->
+<div id="modal-despesa" class="hidden fixed inset-0 bg-black/70 flex items-center justify-center z-50">
+    <div class="bg-[#141021] p-6 rounded-xl w-96 border border-slate-700">
+        <h3 class="text-white font-bold mb-4">Nova Despesa</h3>
+        
+        <input type="text" id="desc-despesa" placeholder="Descrição (ex: Limpeza)" class="w-full bg-[#0d0a17] text-white p-2 rounded mb-3 border border-slate-700">
+        <input type="number" id="valor-despesa" placeholder="Valor (ex: 90.00)" class="w-full bg-[#0d0a17] text-white p-2 rounded mb-3 border border-slate-700">
+        <select id="forma-despesa" class="w-full bg-[#0d0a17] text-white p-2 rounded mb-4 border border-slate-700">
+            <option value="dinheiro">Dinheiro</option>
+            <option value="pix">Pix</option>
+        </select>
+        
+        <div class="flex justify-end gap-2">
+            <button onclick="fecharModal()" class="text-slate-400 px-3 py-1">Cancelar</button>
+            <button onclick="salvarDespesa()" class="bg-yellow-500 text-black font-bold px-4 py-1 rounded">Salvar</button>
+        </div>
+    </div>
+</div>
+
+<!-- Script para salvar no Supabase -->
+<script>
+    // Exemplo de ID da feira atual (na prática você pega do select de feiras)
+    const feiraAtualId = 'COLE_AQUI_O_ID_DA_FEIRA_QUE_ESTA_ABERTA'; 
+
+    function abrirModalDespesa() {
+        document.getElementById('modal-despesa').classList.remove('hidden');
+    }
+
+    function fecharModal() {
+        document.getElementById('modal-despesa').classList.add('hidden');
+    }
+
+    async function salvarDespesa() {
+        const descricao = document.getElementById('desc-despesa').value;
+        const valor = parseFloat(document.getElementById('valor-despesa').value);
+        const forma = document.getElementById('forma-despesa').value;
+
+        if (!descricao || !valor) {
+            alert('Preencha todos os campos!');
+            return;
+        }
+
+        // 1. Insere no banco
+        const { error } = await supabaseClient
+            .from('despesas')
+            .insert([
+                { 
+                    feira_id: feiraAtualId, 
+                    descricao: descricao, 
+                    valor: valor, 
+                    forma_pagamento: forma 
+                }
+            ]);
+
+        if (error) {
+            alert('Erro ao salvar: ' + error.message);
+        } else {
+            alert('Despesa salva com sucesso!');
+            fecharModal();
+            // Aqui você chamaria a função que recarrega a tabela de despesas na tela
+            // carregarDespesas(); 
+        }
+    }
+</script>
+
             <!-- KPI Cards (Linha 1) -->
             <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
                 <div class="bg-[#1a162c] border border-slate-800 rounded-xl p-4 flex justify-between items-start">
