@@ -3,49 +3,45 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Painel Administrativo - Feira da Lua</title>
+    <title>Feira Fácil - Painel Administrativo</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        body { font-family: 'Inter', sans-serif; }
-        .cosmic-bg {
-            background-color: #0d0a17;
-            background-image: radial-gradient(circle at 15% 50%, rgba(76, 29, 149, 0.1), transparent 25%),
-                              radial-gradient(circle at 85% 30%, rgba(245, 158, 11, 0.05), transparent 25%);
-        }
-        /* Esconder barra de rolagem para ficar mais limpo */
-        .no-scrollbar::-webkit-scrollbar { display: none; }
-        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        body { font-family: 'Outfit', sans-serif; }
     </style>
 </head>
-<body class="cosmic-bg text-slate-200 min-h-screen pb-12">
+<body class="bg-slate-50 text-slate-800 min-h-screen pb-12">
 
     <!-- Navbar Superior -->
-    <nav class="bg-[#141021] border-b border-slate-800 p-4 sticky top-0 z-50 shadow-lg shadow-black/50 print:hidden">
+    <nav class="bg-white border-b border-slate-200 p-4 sticky top-0 z-50 shadow-sm print:hidden">
         <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
+            <!-- Logo -->
             <div class="flex items-center gap-3">
-                <div class="w-10 h-10 rounded-full bg-yellow-500 flex items-center justify-center text-[#141021] font-bold text-xl shadow-[0_0_15px_rgba(234,179,8,0.4)]">🌙</div>
+                <div class="w-10 h-10 rounded-xl bg-emerald-600 flex items-center justify-center text-white font-bold text-xl shadow-md">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path></svg>
+                </div>
                 <div>
-                    <h1 class="font-bold text-lg leading-tight text-white">FEIRA DA <span class="text-yellow-400">LUA</span></h1>
-                    <p class="text-xs text-slate-400">Controle Cósmico de Feiras</p>
+                    <h1 class="font-bold text-lg leading-tight text-slate-900">FEIRA <span class="text-emerald-600">FÁCIL</span></h1>
+                    <p class="text-xs text-slate-500 font-medium">Gestão Inteligente</p>
                 </div>
             </div>
             
             <!-- Menu -->
-            <div class="flex items-center gap-2 md:gap-6 text-sm font-medium">
-                <a href="#" id="btn-tab-feiras" class="text-yellow-400 bg-yellow-500/10 px-4 py-2 rounded-lg flex items-center gap-2 transition-colors border border-yellow-500/20 cursor-pointer">
-                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"></path></svg>
+            <div class="flex items-center gap-2 md:gap-4 text-sm font-semibold">
+                <a href="#" id="btn-tab-feiras" class="text-emerald-700 bg-emerald-50 px-4 py-2 rounded-lg flex items-center gap-2 transition-colors border border-emerald-200 cursor-pointer">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
                     Feiras
                 </a>
-                <a href="#" id="btn-tab-feirantes" class="text-slate-400 hover:text-white flex items-center gap-2 transition-colors px-4 py-2 cursor-pointer">
+                <a href="#" id="btn-tab-feirantes" class="text-slate-500 hover:text-slate-900 flex items-center gap-2 transition-colors px-4 py-2 cursor-pointer">
                     <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
                     Feirantes
                 </a>
-                <a href="#" id="btn-tab-relatorios" class="text-slate-400 hover:text-white flex items-center gap-2 transition-colors px-4 py-2 cursor-pointer">
+                <a href="#" id="btn-tab-relatorios" class="text-slate-500 hover:text-slate-900 flex items-center gap-2 transition-colors px-4 py-2 cursor-pointer">
                     <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path></svg>
                     Relatórios
                 </a>
-                <button id="btn-sair" class="text-red-400 hover:text-red-300 flex items-center gap-1 border border-red-500/30 px-3 py-2 rounded-lg transition-colors ml-2 cursor-pointer">
+                <button id="btn-sair" class="text-red-600 hover:text-red-700 bg-red-50 hover:bg-red-100 border border-red-200 px-3 py-2 rounded-lg transition-colors ml-2 cursor-pointer flex items-center gap-1">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"></path></svg>
                     Sair
                 </button>
             </div>
@@ -55,369 +51,149 @@
     <main class="max-w-7xl mx-auto p-4 md:p-6 space-y-8 mt-2">
         
         <!-- ========================================== -->
-        <!-- ABA 1: FEIRAS (Imagens 1, 2 e 3)           -->
+        <!-- ABA 1: FEIRAS                              -->
         <!-- ========================================== -->
         <div id="tab-feiras" class="space-y-6">
             
-            <div class="bg-[#141021] border border-slate-800 rounded-2xl p-6 flex flex-col md:flex-row justify-between items-center gap-4">
-    <div>
-        <h2 class="text-xl font-bold text-white flex items-center gap-2">📅 Gestão de Feiras e Eventos</h2>
-        <p class="text-sm text-slate-400 mt-1">Selecione uma feira existente ou crie um novo evento.</p>
-    </div>
-    
-    <div class="flex items-center gap-2 w-full md:w-auto">
-        <!-- Dropdown que vai puxar as feiras do banco -->
-        <select id="select-feira" class="bg-[#0d0a17] border border-slate-700 text-white text-sm rounded-lg focus:ring-yellow-500 focus:border-yellow-500 block w-full md:w-64 p-3 outline-none">
-            <option value="">Carregando feiras...</option>
-        </select>
-        
-        <!-- Novo Botão -->
-        <button onclick="abrirModalFeira()" class="bg-yellow-500 hover:bg-yellow-400 text-[#141021] font-bold py-3 px-4 rounded-lg whitespace-nowrap transition-colors flex items-center gap-2">
-            + Nova Feira
-        </button>
-    </div>
-</div>
-
-            <!-- Botão na tela -->
-<button onclick="abrirModalDespesa()" class="bg-slate-800 text-white px-3 py-1.5 rounded text-xs">+ Adicionar Despesa</button>
-
-<!-- Modal (Escondido por padrão) -->
-<div id="modal-despesa" class="hidden fixed inset-0 bg-black/70 flex items-center justify-center z-50">
-    <div class="bg-[#141021] p-6 rounded-xl w-96 border border-slate-700">
-        <h3 class="text-white font-bold mb-4">Nova Despesa</h3>
-        
-        <input type="text" id="desc-despesa" placeholder="Descrição (ex: Limpeza)" class="w-full bg-[#0d0a17] text-white p-2 rounded mb-3 border border-slate-700">
-        <input type="number" id="valor-despesa" placeholder="Valor (ex: 90.00)" class="w-full bg-[#0d0a17] text-white p-2 rounded mb-3 border border-slate-700">
-        <select id="forma-despesa" class="w-full bg-[#0d0a17] text-white p-2 rounded mb-4 border border-slate-700">
-            <option value="dinheiro">Dinheiro</option>
-            <option value="pix">Pix</option>
-        </select>
-        
-        <div class="flex justify-end gap-2">
-            <button onclick="fecharModal()" class="text-slate-400 px-3 py-1">Cancelar</button>
-            <button onclick="salvarDespesa()" class="bg-yellow-500 text-black font-bold px-4 py-1 rounded">Salvar</button>
-        </div>
-    </div>
-</div>
-
-<!-- Script para salvar no Supabase -->
-<script>
-    // Exemplo de ID da feira atual (na prática você pega do select de feiras)
-    const feiraAtualId = 'COLE_AQUI_O_ID_DA_FEIRA_QUE_ESTA_ABERTA'; 
-
-    function abrirModalDespesa() {
-        document.getElementById('modal-despesa').classList.remove('hidden');
-    }
-
-    function fecharModal() {
-        document.getElementById('modal-despesa').classList.add('hidden');
-    }
-
-    async function salvarDespesa() {
-        const descricao = document.getElementById('desc-despesa').value;
-        const valor = parseFloat(document.getElementById('valor-despesa').value);
-        const forma = document.getElementById('forma-despesa').value;
-
-        if (!descricao || !valor) {
-            alert('Preencha todos os campos!');
-            return;
-        }
-
-        // 1. Insere no banco
-        const { error } = await supabaseClient
-            .from('despesas')
-            .insert([
-                { 
-                    feira_id: feiraAtualId, 
-                    descricao: descricao, 
-                    valor: valor, 
-                    forma_pagamento: forma 
-                }
-            ]);
-
-        if (error) {
-            alert('Erro ao salvar: ' + error.message);
-        } else {
-            alert('Despesa salva com sucesso!');
-            fecharModal();
-            // Aqui você chamaria a função que recarrega a tabela de despesas na tela
-            // carregarDespesas(); 
-        }
-    }
-</script>
-
-            <!-- KPI Cards (Linha 1) -->
-            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
-                <div class="bg-[#1a162c] border border-slate-800 rounded-xl p-4 flex justify-between items-start">
-                    <div>
-                        <p class="text-xs text-slate-400 uppercase tracking-wider mb-1">Data da Feira</p>
-                        <p class="text-xl font-bold text-white">29/10/2026</p>
-                    </div>
-                    <div class="text-yellow-500 bg-yellow-500/10 p-2 rounded-lg">📅</div>
+            <!-- Header Gestão -->
+            <div class="bg-white border border-slate-200 rounded-2xl p-6 flex flex-col md:flex-row justify-between items-center gap-4 shadow-sm">
+                <div>
+                    <h2 class="text-xl font-bold text-slate-900 flex items-center gap-2">
+                        <svg class="w-6 h-6 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+                        Gestão de Feiras
+                    </h2>
+                    <p class="text-sm text-slate-500 mt-1">Selecione uma feira existente ou crie um novo evento.</p>
                 </div>
-                <div class="bg-[#1a162c] border border-slate-800 rounded-xl p-4 flex justify-between items-start">
-                    <div>
-                        <p class="text-xs text-slate-400 uppercase tracking-wider mb-1">Taxa Padrão</p>
-                        <p class="text-xl font-bold text-white">R$ 55,00</p>
-                    </div>
-                    <div class="text-yellow-500 bg-yellow-500/10 p-2 rounded-lg">🏷️</div>
-                </div>
-                <div class="bg-[#1a162c] border border-slate-800 rounded-xl p-4 flex justify-between items-start">
-                    <div>
-                        <p class="text-xs text-slate-400 uppercase tracking-wider mb-1">Valor Total Feira</p>
-                        <p class="text-xl font-bold text-yellow-400">R$ 1290,00</p>
-                    </div>
-                    <div class="text-yellow-500 bg-yellow-500/10 p-2 rounded-lg">💰</div>
-                </div>
-                <div class="bg-[#1a162c] border border-slate-800 rounded-xl p-4 flex justify-between items-start">
-                    <div>
-                        <p class="text-xs text-slate-400 uppercase tracking-wider mb-1">Total Despesas</p>
-                        <p class="text-xl font-bold text-red-400">R$ 1330,00</p>
-                    </div>
-                    <div class="text-red-500 bg-red-500/10 p-2 rounded-lg">🧾</div>
-                </div>
-                <div class="bg-[#1a162c] border border-slate-800 rounded-xl p-4 flex justify-between items-start">
-                    <div>
-                        <p class="text-xs text-slate-400 uppercase tracking-wider mb-1">Saldo Líquido</p>
-                        <p class="text-xl font-bold text-red-400">R$ -40,00</p>
-                    </div>
-                    <div class="text-red-500 bg-red-500/10 p-2 rounded-lg">📉</div>
+                <div class="flex items-center gap-2 w-full md:w-auto">
+                    <select id="select-feira" class="bg-slate-50 border border-slate-300 text-slate-700 font-medium text-sm rounded-lg focus:ring-emerald-500 focus:border-emerald-500 block w-full md:w-72 p-3 outline-none transition-all">
+                        <option value="">Carregando feiras...</option>
+                    </select>
+                    <button onclick="abrirModalFeira()" class="bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-3 px-5 rounded-lg whitespace-nowrap transition-colors flex items-center gap-2 shadow-sm">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path></svg>
+                        Nova Feira
+                    </button>
                 </div>
             </div>
 
-            <!-- Saldos Detalhados (Linha 2) -->
+            <!-- KPI Cards -->
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
+                <div class="bg-white border border-slate-200 rounded-xl p-5 shadow-sm">
+                    <p class="text-xs text-slate-500 font-semibold uppercase tracking-wider mb-2">Data da Feira</p>
+                    <p class="text-2xl font-bold text-slate-900" id="kpi-data">--/--/----</p>
+                </div>
+                <div class="bg-white border border-slate-200 rounded-xl p-5 shadow-sm">
+                    <p class="text-xs text-slate-500 font-semibold uppercase tracking-wider mb-2">Taxa Padrão</p>
+                    <p class="text-2xl font-bold text-slate-900" id="kpi-taxa">R$ 0,00</p>
+                </div>
+                <div class="bg-white border border-slate-200 rounded-xl p-5 shadow-sm">
+                    <p class="text-xs text-slate-500 font-semibold uppercase tracking-wider mb-2">Valor Total</p>
+                    <p class="text-2xl font-bold text-blue-600" id="kpi-receita-total">R$ 0,00</p>
+                </div>
+                <div class="bg-white border border-slate-200 rounded-xl p-5 shadow-sm">
+                    <p class="text-xs text-slate-500 font-semibold uppercase tracking-wider mb-2">Total Despesas</p>
+                    <p class="text-2xl font-bold text-red-600" id="kpi-despesa-total">R$ 0,00</p>
+                </div>
+                <div class="bg-emerald-600 rounded-xl p-5 shadow-md relative overflow-hidden">
+                    <p class="text-xs text-emerald-100 font-semibold uppercase tracking-wider mb-2 relative z-10">Saldo Líquido</p>
+                    <p class="text-2xl font-bold text-white relative z-10" id="kpi-saldo">R$ 0,00</p>
+                </div>
+            </div>
+
+            <!-- Saldos Detalhados -->
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div class="bg-[#1a162c] border border-emerald-500/20 rounded-xl p-5 flex justify-between items-center relative overflow-hidden">
-                    <div class="absolute left-0 top-0 bottom-0 w-1 bg-emerald-500"></div>
+                <div class="bg-white border border-slate-200 rounded-xl p-5 flex justify-between items-center shadow-sm">
                     <div>
-                        <p class="text-sm font-semibold text-emerald-400 mb-1 flex items-center gap-2">
-                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
+                        <p class="text-sm font-semibold text-emerald-600 mb-1 flex items-center gap-2">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
                             Saldo em Dinheiro
                         </p>
-                        <p class="text-2xl font-bold text-red-400">R$ -55,00</p>
-                        <p class="text-xs text-slate-500 mt-2">Taxas + Receitas Extras/Pós-Feira menos Despesas em Dinheiro</p>
+                        <p class="text-3xl font-bold text-slate-900" id="kpi-saldo-dinheiro">R$ 0,00</p>
                     </div>
-                    <div class="w-12 h-12 rounded-full bg-emerald-500/10 flex items-center justify-center text-emerald-400 text-2xl">💵</div>
                 </div>
-                <div class="bg-[#1a162c] border border-blue-500/20 rounded-xl p-5 flex justify-between items-center relative overflow-hidden">
-                    <div class="absolute left-0 top-0 bottom-0 w-1 bg-blue-500"></div>
+                <div class="bg-white border border-slate-200 rounded-xl p-5 flex justify-between items-center shadow-sm">
                     <div>
-                        <p class="text-sm font-semibold text-blue-400 mb-1 flex items-center gap-2">
-                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"></path></svg>
+                        <p class="text-sm font-semibold text-blue-600 mb-1 flex items-center gap-2">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"></path></svg>
                             Saldo em Pix
                         </p>
-                        <p class="text-2xl font-bold text-emerald-400">R$ 15,00</p>
-                        <p class="text-xs text-slate-500 mt-2">Taxas + Receitas Extras/Pós-Feira menos Despesas via Pix</p>
+                        <p class="text-3xl font-bold text-slate-900" id="kpi-saldo-pix">R$ 0,00</p>
                     </div>
-                    <div class="w-12 h-12 rounded-full bg-blue-500/10 flex items-center justify-center text-blue-400 text-2xl">📱</div>
                 </div>
             </div>
 
-            <!-- Pagamentos Pós-Feira (Imagem 1) -->
-            <div class="bg-[#141021] border border-slate-800 rounded-2xl overflow-hidden">
-                <div class="p-5 border-b border-slate-800">
-                    <h3 class="text-lg font-bold text-white flex items-center gap-2">💸 Pagamentos Pós-Feira (Quitações em Outra Data)</h3>
-                    <p class="text-xs text-slate-400 mt-1">Lançamento de quitações de dívidas ou taxas recebidas fora do dia da feira.</p>
-                </div>
-                <table class="w-full text-sm text-left">
-                    <thead class="text-xs text-slate-400 uppercase bg-[#1a162c]">
-                        <tr>
-                            <th class="px-6 py-4 font-medium">Feirante (Quitação Pós-Feira)</th>
-                            <th class="px-6 py-4 font-medium">Data Real Pg</th>
-                            <th class="px-6 py-4 font-medium">Forma Pagto</th>
-                            <th class="px-6 py-4 font-medium text-right">Valor Quitado</th>
-                        </tr>
-                    </thead>
-                    <tbody class="divide-y divide-slate-800/50">
-                        <tr><td colspan="4" class="px-6 py-6 text-center text-slate-500">Nenhum pagamento pós-feira registrado nesta feira.</td></tr>
-                    </tbody>
-                </table>
-            </div>
-
-            <!-- Receitas e Despesas (Imagens 2 e 3) -->
+            <!-- Receitas e Despesas -->
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
-                
                 <!-- Receitas Extras -->
-                <div class="bg-[#141021] border border-slate-800 rounded-2xl overflow-hidden flex flex-col">
-                    <div class="p-5 border-b border-slate-800 bg-emerald-500/5">
-                        <h3 class="text-lg font-bold text-white flex items-center gap-2">
-                            <span class="text-emerald-400 bg-emerald-500/10 p-1 rounded-full text-sm">+</span> Lançamento de Receitas Extras / Eventuais
+                <div class="bg-white border border-slate-200 rounded-2xl overflow-hidden shadow-sm flex flex-col">
+                    <div class="p-5 border-b border-slate-100 bg-emerald-50/50">
+                        <h3 class="text-lg font-bold text-slate-800 flex items-center gap-2">
+                            <svg class="w-5 h-5 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path></svg>
+                            Receitas Extras
                         </h3>
-                        <p class="text-xs text-slate-400 mt-1">Receitas arrecadadas na feira (ex: fundo de reserva, doações, vendas extras).</p>
                     </div>
                     <div class="flex-grow">
                         <table class="w-full text-sm text-left">
-                            <thead class="text-xs text-slate-400 uppercase bg-[#1a162c]">
+                            <thead class="text-xs text-slate-500 uppercase bg-slate-50 border-b border-slate-100">
                                 <tr>
-                                    <th class="px-5 py-3 font-medium">Descrição</th>
-                                    <th class="px-5 py-3 font-medium">Forma</th>
-                                    <th class="px-5 py-3 font-medium text-right">Valor</th>
+                                    <th class="px-5 py-3 font-semibold">Descrição</th>
+                                    <th class="px-5 py-3 font-semibold">Forma</th>
+                                    <th class="px-5 py-3 font-semibold text-right">Valor</th>
                                 </tr>
                             </thead>
-                            <tbody class="divide-y divide-slate-800/50">
-                                <tr>
-                                    <td class="px-5 py-3 text-slate-300">Sucou pagou (extras)</td>
-                                    <td class="px-5 py-3"><span class="text-xs bg-blue-500/10 text-blue-400 px-2 py-1 rounded border border-blue-500/20">Pix</span></td>
-                                    <td class="px-5 py-3 text-right font-bold text-emerald-400">+ R$ 15,00</td>
-                                </tr>
-                                <tr>
-                                    <td class="px-5 py-3 text-slate-300">Espetinho pagou duas feiras</td>
-                                    <td class="px-5 py-3"><span class="text-xs bg-emerald-500/10 text-emerald-400 px-2 py-1 rounded border border-emerald-500/20">Dinheiro</span></td>
-                                    <td class="px-5 py-3 text-right font-bold text-emerald-400">+ R$ 120,00</td>
-                                </tr>
-                                <tr>
-                                    <td class="px-5 py-3 text-slate-300">Dolores pagou duas feiras</td>
-                                    <td class="px-5 py-3"><span class="text-xs bg-blue-500/10 text-blue-400 px-2 py-1 rounded border border-blue-500/20">Pix</span></td>
-                                    <td class="px-5 py-3 text-right font-bold text-emerald-400">+ R$ 220,00</td>
-                                </tr>
-                                <tr>
-                                    <td class="px-5 py-3 text-slate-300">Recebido dia 04/11 - Cachorro Quente</td>
-                                    <td class="px-5 py-3"><span class="text-xs bg-blue-500/10 text-blue-400 px-2 py-1 rounded border border-blue-500/20">Pix</span></td>
-                                    <td class="px-5 py-3 text-right font-bold text-emerald-400">+ R$ 55,00</td>
-                                </tr>
+                            <tbody id="tabela-receitas-corpo" class="divide-y divide-slate-100">
+                                <tr><td colspan="3" class="px-5 py-6 text-center text-slate-400">Nenhuma receita extra.</td></tr>
                             </tbody>
                         </table>
                     </div>
                 </div>
 
                 <!-- Despesas Detalhadas -->
-                <div class="bg-[#141021] border border-slate-800 rounded-2xl overflow-hidden flex flex-col">
-                    <div class="p-5 border-b border-slate-800 bg-red-500/5">
-                        <h3 class="text-lg font-bold text-white flex items-center gap-2">
-                            <span class="text-red-400 bg-red-500/10 p-1 rounded-full text-sm">-</span> Despesas Detalhadas da Feira
+                <div class="bg-white border border-slate-200 rounded-2xl overflow-hidden shadow-sm flex flex-col">
+                    <div class="p-5 border-b border-slate-100 bg-red-50/50">
+                        <h3 class="text-lg font-bold text-slate-800 flex items-center gap-2">
+                            <svg class="w-5 h-5 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 12H4"></path></svg>
+                            Despesas Detalhadas
                         </h3>
-                        <p class="text-xs text-slate-400 mt-1">Detalhamento das despesas individuais e a forma de pagamento utilizada.</p>
                     </div>
                     <div class="flex-grow max-h-80 overflow-y-auto">
                         <table class="w-full text-sm text-left">
-                            <thead class="text-xs text-slate-400 uppercase bg-[#1a162c] sticky top-0">
+                            <thead class="text-xs text-slate-500 uppercase bg-slate-50 border-b border-slate-100 sticky top-0">
                                 <tr>
-                                    <th class="px-5 py-3 font-medium">Descrição</th>
-                                    <th class="px-5 py-3 font-medium">Forma</th>
-                                    <th class="px-5 py-3 font-medium text-right">Valor</th>
+                                    <th class="px-5 py-3 font-semibold">Descrição</th>
+                                    <th class="px-5 py-3 font-semibold">Forma</th>
+                                    <th class="px-5 py-3 font-semibold text-right">Valor</th>
                                 </tr>
                             </thead>
-                            <tbody class="divide-y divide-slate-800/50">
-                                <tr>
-                                    <td class="px-5 py-3 text-slate-300">Limpeza</td>
-                                    <td class="px-5 py-3"><span class="text-xs bg-emerald-500/10 text-emerald-400 px-2 py-1 rounded border border-emerald-500/20">Dinheiro</span></td>
-                                    <td class="px-5 py-3 text-right font-bold text-red-400">R$ 90,00</td>
-                                </tr>
-                                <tr>
-                                    <td class="px-5 py-3 text-slate-300">Limpeza</td>
-                                    <td class="px-5 py-3"><span class="text-xs bg-emerald-500/10 text-emerald-400 px-2 py-1 rounded border border-emerald-500/20">Dinheiro</span></td>
-                                    <td class="px-5 py-3 text-right font-bold text-red-400">R$ 90,00</td>
-                                </tr>
-                                <tr>
-                                    <td class="px-5 py-3 text-slate-300">Locutor</td>
-                                    <td class="px-5 py-3"><span class="text-xs bg-emerald-500/10 text-emerald-400 px-2 py-1 rounded border border-emerald-500/20">Dinheiro</span></td>
-                                    <td class="px-5 py-3 text-right font-bold text-red-400">R$ 110,00</td>
-                                </tr>
-                                <tr>
-                                    <td class="px-5 py-3 text-slate-300">Coordenadora</td>
-                                    <td class="px-5 py-3"><span class="text-xs bg-emerald-500/10 text-emerald-400 px-2 py-1 rounded border border-emerald-500/20">Dinheiro</span></td>
-                                    <td class="px-5 py-3 text-right font-bold text-red-400">R$ 200,00</td>
-                                </tr>
-                                <tr>
-                                    <td class="px-5 py-3 text-slate-300">Mesas</td>
-                                    <td class="px-5 py-3"><span class="text-xs bg-blue-500/10 text-blue-400 px-2 py-1 rounded border border-blue-500/20">Pix</span></td>
-                                    <td class="px-5 py-3 text-right font-bold text-red-400">R$ 550,00</td>
-                                </tr>
+                            <tbody id="tabela-despesas-corpo" class="divide-y divide-slate-100">
+                                <tr><td colspan="3" class="px-5 py-6 text-center text-slate-400">Nenhuma despesa.</td></tr>
                             </tbody>
                         </table>
                     </div>
                 </div>
             </div>
-
-            <!-- Barra de Resumo Inferior (Imagem 3) -->
-            <div class="bg-[#141021] border border-slate-800 rounded-2xl p-4 flex flex-wrap justify-between items-center gap-4 text-sm">
-                <div class="flex flex-wrap gap-4 text-slate-400">
-                    <span class="bg-[#1a162c] px-3 py-1.5 rounded-lg border border-slate-700">Total Cadastrados: <strong class="text-white">21</strong></span>
-                    <span class="bg-[#1a162c] px-3 py-1.5 rounded-lg border border-slate-700">Presentes: <strong class="text-emerald-400">16</strong></span>
-                    <span class="bg-[#1a162c] px-3 py-1.5 rounded-lg border border-slate-700">Faltas: <strong class="text-red-400">5</strong></span>
-                    <span class="bg-[#1a162c] px-3 py-1.5 rounded-lg border border-slate-700">Arrecadado Dinheiro: <strong class="text-emerald-400">R$ 725,00</strong></span>
-                    <span class="bg-[#1a162c] px-3 py-1.5 rounded-lg border border-slate-700">Arrecadado Pix: <strong class="text-blue-400">R$ 565,00</strong></span>
-                </div>
-                <button class="bg-yellow-500 hover:bg-yellow-400 text-[#141021] font-bold py-2.5 px-6 rounded-lg flex items-center gap-2 shadow-[0_0_15px_rgba(234,179,8,0.3)] transition-all">
-                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"></path></svg>
-                    Imprimir Relatório
-                </button>
-            </div>
         </div>
 
         <!-- ========================================== -->
-        <!-- ABA 2: FEIRANTES (Imagens 4 e 5)           -->
+        <!-- ABA 2: FEIRANTES                           -->
         <!-- ========================================== -->
         <div id="tab-feirantes" class="hidden space-y-6">
-            
-            <!-- Lista de Pagamentos -->
-            <div class="bg-[#141021] border border-slate-800 rounded-2xl overflow-hidden">
-                <div class="p-5 border-b border-slate-800 flex justify-between items-center">
-                    <h3 class="text-lg font-bold text-white flex items-center gap-2">📋 Lista de Feirantes & Pagamentos</h3>
-                    <div class="relative w-64">
-                        <input type="text" placeholder="Filtrar feirante..." class="w-full bg-[#0d0a17] border border-slate-700 text-white text-sm rounded-lg pl-10 pr-4 py-2 outline-none focus:border-yellow-500">
-                        <svg class="w-4 h-4 text-slate-400 absolute left-3 top-2.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
-                    </div>
+            <div class="bg-white border border-slate-200 rounded-2xl overflow-hidden shadow-sm">
+                <div class="p-5 border-b border-slate-200 flex justify-between items-center bg-slate-50/50">
+                    <h3 class="text-lg font-bold text-slate-900 flex items-center gap-2">Lista de Feirantes & Pagamentos</h3>
                 </div>
                 <div class="overflow-x-auto">
                     <table class="w-full text-sm text-left">
-                        <thead class="text-xs text-slate-400 uppercase bg-[#1a162c]">
+                        <thead class="text-xs text-slate-500 uppercase bg-slate-50 border-b border-slate-200">
                             <tr>
-                                <th class="px-6 py-4 font-medium">Feirante</th>
-                                <th class="px-6 py-4 font-medium">Participação</th>
-                                <th class="px-6 py-4 font-medium">Status / Forma de Pagamento</th>
-                                <th class="px-6 py-4 font-medium">Valor Taxa (R$)</th>
-                                <th class="px-6 py-4 font-medium text-right">Ações / Situação</th>
+                                <th class="px-6 py-4 font-semibold">Feirante</th>
+                                <th class="px-6 py-4 font-semibold">Participação</th>
+                                <th class="px-6 py-4 font-semibold">Status / Pagamento</th>
+                                <th class="px-6 py-4 font-semibold">Valor Taxa</th>
+                                <th class="px-6 py-4 font-semibold text-right">Ações</th>
                             </tr>
                         </thead>
-                        <!-- AQUI O JAVASCRIPT VAI PUXAR OS DADOS REAIS DO SUPABASE -->
-                        <tbody id="tabela-feirantes-corpo" class="divide-y divide-slate-800/50">
-                            <tr>
-                                <td colspan="5" class="px-6 py-4 text-center text-slate-500">Carregando dados do banco...</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-
-            <!-- Cadastro Geral -->
-            <div class="bg-[#141021] border border-slate-800 rounded-2xl overflow-hidden">
-                <div class="p-5 border-b border-slate-800 flex justify-between items-center">
-                    <div>
-                        <h3 class="text-lg font-bold text-white flex items-center gap-2">👥 Cadastro Geral de Feirantes</h3>
-                        <p class="text-xs text-slate-400 mt-1">Cadastre, edite ou remova os feirantes disponíveis para participar das feiras.</p>
-                    </div>
-                    <div class="relative w-64">
-                        <input type="text" placeholder="Buscar por nome..." class="w-full bg-[#0d0a17] border border-slate-700 text-white text-sm rounded-lg pl-10 pr-4 py-2 outline-none focus:border-yellow-500">
-                        <svg class="w-4 h-4 text-slate-400 absolute left-3 top-2.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
-                    </div>
-                </div>
-                <div class="overflow-x-auto max-h-96 overflow-y-auto">
-                    <table class="w-full text-sm text-left">
-                        <thead class="text-xs text-slate-400 uppercase bg-[#1a162c] sticky top-0">
-                            <tr>
-                                <th class="px-6 py-4 font-medium">Nome</th>
-                                <th class="px-6 py-4 font-medium">Telefone / Contato</th>
-                                <th class="px-6 py-4 font-medium">Segmento / Produto</th>
-                            </tr>
-                        </thead>
-                        <tbody class="divide-y divide-slate-800/50">
-                            <tr class="hover:bg-slate-800/20 transition-colors">
-                                <td class="px-6 py-3 flex items-center gap-3">
-                                    <div class="w-8 h-8 rounded-full bg-yellow-500/20 text-yellow-500 flex items-center justify-center font-bold">A</div>
-                                    <span class="font-semibold text-white">Alpha Burguer</span>
-                                </td>
-                                <td class="px-6 py-3 text-slate-500">-</td>
-                                <td class="px-6 py-3"><span class="text-xs border border-slate-700 px-2 py-1 rounded bg-[#1a162c]">Geral</span></td>
-                            </tr>
-                            <tr class="hover:bg-slate-800/20 transition-colors">
-                                <td class="px-6 py-3 flex items-center gap-3">
-                                    <div class="w-8 h-8 rounded-full bg-yellow-500/20 text-yellow-500 flex items-center justify-center font-bold">B</div>
-                                    <span class="font-semibold text-white">Batata Frita</span>
-                                </td>
-                                <td class="px-6 py-3 text-slate-500">-</td>
-                                <td class="px-6 py-3"><span class="text-xs border border-slate-700 px-2 py-1 rounded bg-[#1a162c]">Geral</span></td>
-                            </tr>
+                        <tbody id="tabela-feirantes-corpo" class="divide-y divide-slate-100">
+                            <tr><td colspan="5" class="px-6 py-8 text-center text-slate-400">Carregando dados...</td></tr>
                         </tbody>
                     </table>
                 </div>
@@ -425,331 +201,231 @@
         </div>
 
         <!-- ========================================== -->
-        <!-- ABA 3: RELATÓRIOS (Imagem 6)               -->
+        <!-- ABA 3: RELATÓRIOS                          -->
         <!-- ========================================== -->
         <div id="tab-relatorios" class="hidden space-y-6">
-            
-            <!-- Header Relatório -->
-            <div class="bg-[#141021] border border-slate-800 rounded-2xl p-6 flex flex-col md:flex-row justify-between items-center gap-4">
+            <div class="bg-white border border-slate-200 rounded-2xl p-6 flex flex-col md:flex-row justify-between items-center gap-4 shadow-sm">
                 <div>
-                    <h2 class="text-xl font-bold text-white flex items-center gap-2">📊 Relatório Geral de Feiras</h2>
-                    <p class="text-sm text-slate-400 mt-1">Prestação de contas consolidada das feiras realizadas, saldos em Pix, Dinheiro e cobranças.</p>
+                    <h2 class="text-xl font-bold text-slate-900 flex items-center gap-2">Relatório Geral de Feiras</h2>
+                    <p class="text-sm text-slate-500 mt-1">Prestação de contas consolidada.</p>
                 </div>
-                <button onclick="window.print()" class="bg-yellow-500 hover:bg-yellow-400 text-[#141021] font-bold py-2.5 px-6 rounded-lg flex items-center gap-2 shadow-[0_0_15px_rgba(234,179,8,0.3)] transition-all">
+                <button onclick="window.print()" class="bg-slate-800 hover:bg-slate-900 text-white font-bold py-2.5 px-6 rounded-lg flex items-center gap-2 transition-all shadow-sm">
                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"></path></svg>
                     Imprimir Relatório
                 </button>
             </div>
-
-            <!-- KPIs Relatório -->
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-                <div class="bg-[#1a162c] border border-slate-800 rounded-xl p-4">
-                    <p class="text-xs text-slate-400 uppercase tracking-wider mb-1">Total de Feiras</p>
-                    <p class="text-2xl font-bold text-white">13</p>
-                </div>
-                <div class="bg-[#1a162c] border border-emerald-500/20 rounded-xl p-4">
-                    <p class="text-xs text-emerald-400 uppercase tracking-wider mb-1 flex items-center gap-1">💵 Total Dinheiro (Liq)</p>
-                    <p class="text-2xl font-bold text-emerald-400">R$ 608,48</p>
-                </div>
-                <div class="bg-[#1a162c] border border-blue-500/20 rounded-xl p-4">
-                    <p class="text-xs text-blue-400 uppercase tracking-wider mb-1 flex items-center gap-1">📱 Total Pix (Liq)</p>
-                    <p class="text-2xl font-bold text-blue-400">R$ 660,00</p>
-                </div>
-                <div class="bg-[#1a162c] border border-yellow-500/30 rounded-xl p-4 relative overflow-hidden">
-                    <p class="text-xs text-yellow-400 uppercase tracking-wider mb-1">Saldo Líquido Geral</p>
-                    <p class="text-2xl font-bold text-yellow-400">R$ 1268,48</p>
-                </div>
-            </div>
-
-            <!-- Pendentes -->
-            <div class="bg-[#141021] border border-slate-800 rounded-2xl overflow-hidden">
-                <div class="p-5 border-b border-slate-800 flex justify-between items-center">
-                    <div>
-                        <h3 class="text-lg font-bold text-white flex items-center gap-2">🚨 Relatório de Pendentes para Cobrança</h3>
-                        <p class="text-xs text-slate-400 mt-1">Lista consolidada de feirantes com pagamento pendente para cobrança imediata.</p>
-                    </div>
-                    <div class="bg-red-500/20 border border-red-500/30 text-red-400 px-4 py-2 rounded-lg text-sm font-bold shadow-[0_0_10px_rgba(239,68,68,0.2)]">
-                        Total Pendente: R$ 0,00
-                    </div>
-                </div>
-                <table class="w-full text-sm text-left">
-                    <thead class="text-xs text-slate-400 uppercase bg-[#1a162c]">
-                        <tr>
-                            <th class="px-6 py-4 font-medium">Feira (Data)</th>
-                            <th class="px-6 py-4 font-medium">Feirante</th>
-                            <th class="px-6 py-4 font-medium">Contato</th>
-                            <th class="px-6 py-4 font-medium">Presença</th>
-                            <th class="px-6 py-4 font-medium">Valor Pendente</th>
-                        </tr>
-                    </thead>
-                    <tbody class="divide-y divide-slate-800/50">
-                        <tr><td colspan="5" class="px-6 py-8 text-center text-emerald-400 font-semibold">✓ Nenhuma pendência de pagamento em aberto!</td></tr>
-                    </tbody>
-                </table>
-            </div>
-
-            <!-- Extrato Detalhado -->
-            <div class="bg-[#141021] border border-slate-800 rounded-2xl overflow-hidden">
-                <div class="p-5 border-b border-slate-800">
-                    <h3 class="text-lg font-bold text-white flex items-center gap-2">📒 Extrato Detalhado de Feiras</h3>
-                </div>
-                <div class="p-5 space-y-4">
-                    
-                    <!-- Card Feira 1 -->
-                    <div class="bg-[#1a162c] border border-slate-700/50 rounded-xl p-4">
-                        <div class="flex flex-col md:flex-row justify-between items-start md:items-center border-b border-slate-700/50 pb-3 mb-3 gap-2">
-                            <h4 class="font-bold text-white text-md flex items-center gap-2">📅 Feira de 29/10/2026</h4>
-                            <div class="text-right">
-                                <p class="text-[10px] text-slate-400 uppercase">Saldo Líquido da Feira</p>
-                                <p class="text-lg font-bold text-red-400">R$ -40,00</p>
-                            </div>
-                        </div>
-                        <div class="space-y-2 text-xs text-slate-400">
-                            <p><strong class="text-slate-300">Taxa Padrão:</strong> R$ 55,00 | <strong class="text-emerald-400">Dinheiro (Liq):</strong> R$ -55,00 | <strong class="text-blue-400">Pix (Liq):</strong> R$ 15,00</p>
-                            <p><strong class="text-slate-300">Quitações Pós-Feira:</strong> Nenhum</p>
-                            <p><strong class="text-emerald-400">Receitas Extras:</strong> Sucou (R$15), Espetinho (R$120), Dolores (R$220), Cachorro Quente (R$55).</p>
-                            <p><strong class="text-red-400">Despesas:</strong> Limpeza (R$90), Limpeza (R$90), Locutor (R$110), Coordenadora (R$200), Divulgação (R$100), Mesas (R$550), Locutor (R$40), Pintura (R$150).</p>
-                        </div>
-                        <p class="text-xs text-emerald-400 mt-3 font-semibold">✓ Todos os presentes quitaram taxas!</p>
-                    </div>
-
-                    <!-- Card Feira 2 -->
-                    <div class="bg-[#1a162c] border border-slate-700/50 rounded-xl p-4">
-                        <div class="flex flex-col md:flex-row justify-between items-start md:items-center border-b border-slate-700/50 pb-3 mb-3 gap-2">
-                            <h4 class="font-bold text-white text-md flex items-center gap-2">📅 Feira de 15/10/2026</h4>
-                            <div class="text-right">
-                                <p class="text-[10px] text-slate-400 uppercase">Saldo Líquido da Feira</p>
-                                <p class="text-lg font-bold text-emerald-400">R$ 362,00</p>
-                            </div>
-                        </div>
-                        <div class="space-y-2 text-xs text-slate-400">
-                            <p><strong class="text-slate-300">Taxa Padrão:</strong> R$ 55,00 | <strong class="text-emerald-400">Dinheiro (Liq):</strong> R$ 5,00 | <strong class="text-blue-400">Pix (Liq):</strong> R$ 357,00</p>
-                        </div>
-                    </div>
-
-                </div>
+            <div class="bg-white border border-slate-200 rounded-2xl p-10 text-center text-slate-500 shadow-sm">
+                <p>Módulo de relatórios em desenvolvimento...</p>
             </div>
         </div>
 
-<!-- Modal de Nova Feira -->
-<div id="modal-feira" class="hidden fixed inset-0 bg-black/80 flex items-center justify-center z-[100] p-4">
-    <div class="bg-[#141021] border border-slate-700 p-6 rounded-2xl w-full max-w-md shadow-2xl">
-        <h3 class="text-xl font-bold text-white mb-4">Criar Nova Feira</h3>
-        
-        <form id="form-feira" class="space-y-4">
-            <div>
-                <label class="block text-xs font-medium text-slate-400 mb-1">Data da Feira</label>
-                <input type="date" id="data-feira" required class="w-full bg-[#0d0a17] border border-slate-700 text-white p-3 rounded-lg outline-none focus:border-yellow-500">
-            </div>
-            <div>
-                <label class="block text-xs font-medium text-slate-400 mb-1">Local</label>
-                <input type="text" id="local-feira" placeholder="Ex: Praça Central" required class="w-full bg-[#0d0a17] border border-slate-700 text-white p-3 rounded-lg outline-none focus:border-yellow-500">
-            </div>
-            <div>
-                <label class="block text-xs font-medium text-slate-400 mb-1">Taxa Padrão (R$)</label>
-                <input type="number" step="0.01" id="taxa-feira" value="55.00" required class="w-full bg-[#0d0a17] border border-slate-700 text-white p-3 rounded-lg outline-none focus:border-yellow-500">
-            </div>
-            
-            <div class="flex justify-end gap-3 mt-6">
-                <button type="button" onclick="fecharModalFeira()" class="text-slate-400 hover:text-white px-4 py-2 transition-colors">Cancelar</button>
-                <button type="submit" class="bg-yellow-500 hover:bg-yellow-400 text-[#141021] font-bold px-6 py-2 rounded-lg transition-colors">Salvar Feira</button>
-            </div>
-        </form>
-    </div>
-</div>
-
     </main>
 
-    <!-- ========================================== -->
-    <!-- SCRIPTS DO SISTEMA                         -->
-    <!-- ========================================== -->
+    <!-- MODAL NOVA FEIRA -->
+    <div id="modal-feira" class="hidden fixed inset-0 bg-slate-900/50 backdrop-blur-sm flex items-center justify-center z-[100] p-4">
+        <div class="bg-white p-6 rounded-2xl w-full max-w-md shadow-xl">
+            <h3 class="text-xl font-bold text-slate-900 mb-4">Criar Nova Feira</h3>
+            <form id="form-feira" class="space-y-4">
+                <div>
+                    <label class="block text-xs font-semibold text-slate-600 mb-1">Data da Feira</label>
+                    <input type="date" id="data-feira" required class="w-full bg-slate-50 border border-slate-300 text-slate-800 p-3 rounded-lg outline-none focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 transition-all">
+                </div>
+                <div>
+                    <label class="block text-xs font-semibold text-slate-600 mb-1">Local</label>
+                    <input type="text" id="local-feira" placeholder="Ex: Praça Central" required class="w-full bg-slate-50 border border-slate-300 text-slate-800 p-3 rounded-lg outline-none focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 transition-all">
+                </div>
+                <div>
+                    <label class="block text-xs font-semibold text-slate-600 mb-1">Taxa Padrão (R$)</label>
+                    <input type="number" step="0.01" id="taxa-feira" value="55.00" required class="w-full bg-slate-50 border border-slate-300 text-slate-800 p-3 rounded-lg outline-none focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 transition-all">
+                </div>
+                <div class="flex justify-end gap-3 mt-6">
+                    <button type="button" onclick="fecharModalFeira()" class="text-slate-500 hover:text-slate-800 font-medium px-4 py-2 transition-colors">Cancelar</button>
+                    <button type="submit" class="bg-emerald-600 hover:bg-emerald-700 text-white font-bold px-6 py-2 rounded-lg shadow-sm transition-colors">Salvar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- SCRIPTS -->
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <script>
-        // 1. Configuração do Supabase
         const SUPABASE_URL = 'https://jpkeqklawvmunsvzjvdr.supabase.co';
         const SUPABASE_ANON_KEY = 'sb_publishable_vLcgMhZnYNBsIjkooBb8_w_53AFsVQq';
         const { createClient } = supabase;
         const supabaseClient = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
-        // 2. Controle de Abas
+        let idDaFeiraAtual = null;
+
+        // Navegação por Abas
         const btnFeiras = document.getElementById('btn-tab-feiras');
         const btnFeirantes = document.getElementById('btn-tab-feirantes');
         const btnRelatorios = document.getElementById('btn-tab-relatorios');
-
         const tabFeiras = document.getElementById('tab-feiras');
         const tabFeirantes = document.getElementById('tab-feirantes');
         const tabRelatorios = document.getElementById('tab-relatorios');
 
-        function esconderTudo() {
+        function esconderAbas() {
             tabFeiras.classList.add('hidden');
             tabFeirantes.classList.add('hidden');
             tabRelatorios.classList.add('hidden');
-            
-            const classesInativas = 'text-slate-400 hover:text-white flex items-center gap-2 transition-colors px-4 py-2 cursor-pointer';
-            btnFeiras.className = classesInativas;
-            btnFeirantes.className = classesInativas;
-            btnRelatorios.className = classesInativas;
+            const inativo = 'text-slate-500 hover:text-slate-900 flex items-center gap-2 transition-colors px-4 py-2 cursor-pointer';
+            btnFeiras.className = inativo;
+            btnFeirantes.className = inativo;
+            btnRelatorios.className = inativo;
+        }
+        function ativarAba(btn) {
+            btn.className = 'text-emerald-700 bg-emerald-50 px-4 py-2 rounded-lg flex items-center gap-2 transition-colors border border-emerald-200 cursor-pointer';
         }
 
-        function ativarBotao(botao) {
-            botao.className = 'text-yellow-400 bg-yellow-500/10 px-4 py-2 rounded-lg flex items-center gap-2 transition-colors border border-yellow-500/20 cursor-pointer';
-        }
+        btnFeiras.addEventListener('click', (e) => { e.preventDefault(); esconderAbas(); tabFeiras.classList.remove('hidden'); ativarAba(btnFeiras); });
+        btnFeirantes.addEventListener('click', (e) => { e.preventDefault(); esconderAbas(); tabFeirantes.classList.remove('hidden'); ativarAba(btnFeirantes); });
+        btnRelatorios.addEventListener('click', (e) => { e.preventDefault(); esconderAbas(); tabRelatorios.classList.remove('hidden'); ativarAba(btnRelatorios); });
 
-        btnFeiras.addEventListener('click', (e) => {
-            e.preventDefault(); esconderTudo();
-            tabFeiras.classList.remove('hidden'); ativarBotao(btnFeiras);
-        });
-        btnFeirantes.addEventListener('click', (e) => {
-            e.preventDefault(); esconderTudo();
-            tabFeirantes.classList.remove('hidden'); ativarBotao(btnFeirantes);
-        });
-        btnRelatorios.addEventListener('click', (e) => {
-            e.preventDefault(); esconderTudo();
-            tabRelatorios.classList.remove('hidden'); ativarBotao(btnRelatorios);
-        });
-
-        // 3. Botão Sair
+        // Logout
         document.getElementById('btn-sair').addEventListener('click', async (e) => {
             e.preventDefault();
             await supabaseClient.auth.signOut();
             window.location.href = 'index.html';
         });
 
-        // 4. Puxar Dados da Tabela de Feirantes (Imagem 4)
-        async function carregarTabelaFeirantes() {
-            const { data: feirantes, error } = await supabaseClient.from('financeiro').select('*');
-            if (error) { console.error(error); return; }
+        // Modal Nova Feira
+        window.abrirModalFeira = () => document.getElementById('modal-feira').classList.remove('hidden');
+        window.fecharModalFeira = () => document.getElementById('modal-feira').classList.add('hidden');
 
+        document.getElementById('form-feira').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const btn = e.target.querySelector('button[type="submit"]');
+            btn.innerText = 'Salvando...';
+
+            const { error } = await supabaseClient.from('feiras').insert([{
+                data_feira: document.getElementById('data-feira').value,
+                local: document.getElementById('local-feira').value,
+                taxa_padrao: parseFloat(document.getElementById('taxa-feira').value)
+            }]);
+
+            btn.innerText = 'Salvar';
+            if (error) { alert('Erro: ' + error.message); } 
+            else {
+                fecharModalFeira();
+                document.getElementById('form-feira').reset();
+                carregarFeiras(); 
+            }
+        });
+
+        // Carregar Dropdown de Feiras
+        async function carregarFeiras() {
+            const select = document.getElementById('select-feira');
+            const { data: feiras } = await supabaseClient.from('feiras').select('*').order('data_feira', { ascending: false });
+            
+            select.innerHTML = '<option value="">Selecione uma feira...</option>';
+            if (feiras.length === 0) return;
+
+            feiras.forEach(f => {
+                const dataF = f.data_feira.split('-').reverse().join('/');
+                select.innerHTML += `<option value="${f.id}">Feira de ${dataF} - ${f.local}</option>`;
+            });
+
+            select.value = feiras[0].id;
+            carregarDadosFeira(feiras[0].id);
+        }
+
+        document.getElementById('select-feira').addEventListener('change', (e) => {
+            if (e.target.value) carregarDadosFeira(e.target.value);
+        });
+
+        // Carregar Dados e Matemática
+        async function carregarDadosFeira(feiraId) {
+            idDaFeiraAtual = feiraId;
+
+            const { data: feira } = await supabaseClient.from('feiras').select('*').eq('id', feiraId).single();
+            if (feira) {
+                document.getElementById('kpi-data').innerText = feira.data_feira.split('-').reverse().join('/');
+                document.getElementById('kpi-taxa').innerText = `R$ ${feira.taxa_padrao.toFixed(2).replace('.', ',')}`;
+            }
+
+            // Receitas
+            const { data: receitas } = await supabaseClient.from('receitas_extras').select('*').eq('feira_id', feiraId);
+            let recDinheiro = 0, recPix = 0;
+            const tbRec = document.getElementById('tabela-receitas-corpo');
+            tbRec.innerHTML = receitas.length === 0 ? '<tr><td colspan="3" class="px-5 py-6 text-center text-slate-400">Nenhuma receita extra.</td></tr>' : '';
+
+            receitas.forEach(r => {
+                if (r.forma_pagamento === 'dinheiro') recDinheiro += r.valor;
+                if (r.forma_pagamento === 'pix') recPix += r.valor;
+                tbRec.innerHTML += `
+                    <tr class="hover:bg-slate-50 transition-colors">
+                        <td class="px-5 py-3 text-slate-700 font-medium">${r.descricao}</td>
+                        <td class="px-5 py-3"><span class="text-[10px] font-bold bg-${r.forma_pagamento === 'pix' ? 'blue' : 'emerald'}-100 text-${r.forma_pagamento === 'pix' ? 'blue' : 'emerald'}-700 px-2 py-1 rounded-md uppercase tracking-wide">${r.forma_pagamento}</span></td>
+                        <td class="px-5 py-3 text-right font-bold text-emerald-600">+ R$ ${r.valor.toFixed(2).replace('.', ',')}</td>
+                    </tr>`;
+            });
+
+            // Despesas
+            const { data: despesas } = await supabaseClient.from('despesas').select('*').eq('feira_id', feiraId);
+            let despDinheiro = 0, despPix = 0, despTotal = 0;
+            const tbDesp = document.getElementById('tabela-despesas-corpo');
+            tbDesp.innerHTML = despesas.length === 0 ? '<tr><td colspan="3" class="px-5 py-6 text-center text-slate-400">Nenhuma despesa.</td></tr>' : '';
+
+            despesas.forEach(d => {
+                if (d.forma_pagamento === 'dinheiro') despDinheiro += d.valor;
+                if (d.forma_pagamento === 'pix') despPix += d.valor;
+                despTotal += d.valor;
+                tbDesp.innerHTML += `
+                    <tr class="hover:bg-slate-50 transition-colors">
+                        <td class="px-5 py-3 text-slate-700 font-medium">${d.descricao}</td>
+                        <td class="px-5 py-3"><span class="text-[10px] font-bold bg-${d.forma_pagamento === 'pix' ? 'blue' : 'emerald'}-100 text-${d.forma_pagamento === 'pix' ? 'blue' : 'emerald'}-700 px-2 py-1 rounded-md uppercase tracking-wide">${d.forma_pagamento}</span></td>
+                        <td class="px-5 py-3 text-right font-bold text-red-600">- R$ ${d.valor.toFixed(2).replace('.', ',')}</td>
+                    </tr>`;
+            });
+
+            // Cálculos
+            const saldoDin = recDinheiro - despDinheiro;
+            const saldoPix = recPix - despPix;
+            const entradas = recDinheiro + recPix;
+            const saldoLiq = entradas - despTotal;
+
+            document.getElementById('kpi-receita-total').innerText = `R$ ${entradas.toFixed(2).replace('.', ',')}`;
+            document.getElementById('kpi-despesa-total').innerText = `R$ ${despTotal.toFixed(2).replace('.', ',')}`;
+            
+            const elSaldo = document.getElementById('kpi-saldo');
+            elSaldo.innerText = `R$ ${saldoLiq.toFixed(2).replace('.', ',')}`;
+            elSaldo.className = `text-2xl font-bold ${saldoLiq < 0 ? 'text-white' : 'text-white'}`; // Corrigido para manter branco no card verde
+
+            document.getElementById('kpi-saldo-dinheiro').innerText = `R$ ${saldoDin.toFixed(2).replace('.', ',')}`;
+            document.getElementById('kpi-saldo-pix').innerText = `R$ ${saldoPix.toFixed(2).replace('.', ',')}`;
+        }
+
+        // Carregar Feirantes
+        async function carregarTabelaFeirantes() {
+            const { data: feirantes } = await supabaseClient.from('financeiro').select('*');
             const tbody = document.getElementById('tabela-feirantes-corpo');
             tbody.innerHTML = '';
-
-            if(feirantes.length === 0) {
-                tbody.innerHTML = '<tr><td colspan="5" class="px-6 py-4 text-center text-slate-500">Nenhum dado encontrado no banco.</td></tr>';
+            
+            if(!feirantes || feirantes.length === 0) {
+                tbody.innerHTML = '<tr><td colspan="5" class="px-6 py-8 text-center text-slate-400">Nenhum dado encontrado.</td></tr>';
                 return;
             }
 
             feirantes.forEach(f => {
                 const isPago = f.status_pagamento === 'pago';
-                // Formata a data de YYYY-MM-DD para DD/MM/YYYY
-                const dtFormatada = f.data_feira ? f.data_feira.split('-').reverse().join('/') : '-';
-                
-                const tr = document.createElement('tr');
-                tr.className = 'hover:bg-slate-800/20 transition-colors';
-                
-                tr.innerHTML = `
-                    <td class="px-6 py-4 flex items-center gap-3">
-                        <div class="w-8 h-8 rounded-full bg-yellow-500/20 text-yellow-500 flex items-center justify-center font-bold">${f.feirante_nome.charAt(0)}</div>
-                        <div>
-                            <p class="font-semibold text-white">${f.feirante_nome}</p>
-                            <p class="text-xs text-slate-500">Geral</p>
-                        </div>
-                    </td>
-                    <td class="px-6 py-4 text-emerald-400 font-medium">Presente</td>
-                    <td class="px-6 py-4">
-                        ${isPago 
-                            ? `<span class="text-${f.forma_pagamento === 'pix' ? 'blue' : 'yellow'}-400 font-bold text-xs uppercase">${f.forma_pagamento}</span>` 
-                            : '<span class="text-slate-500 text-xs">---</span>'}
-                    </td>
-                    <td class="px-6 py-4 font-bold text-white">R$ ${f.valor_taxa.toFixed(2).replace('.', ',')}</td>
-                    <td class="px-6 py-4 text-right">
-                        ${isPago 
-                            ? `<span class="inline-flex items-center gap-1 bg-emerald-500/10 text-emerald-400 text-xs px-2.5 py-1 rounded-md border border-emerald-500/20">✓ Quitado</span>`
-                            : `<button onclick="registrarPagamento(${f.id})" class="bg-yellow-500 hover:bg-yellow-400 text-[#141021] text-xs font-bold px-3 py-1.5 rounded-md transition-colors">Receber</button>`
-                        }
-                    </td>
-                `;
-                tbody.appendChild(tr);
+                tbody.innerHTML += `
+                    <tr class="hover:bg-slate-50 transition-colors">
+                        <td class="px-6 py-4 flex items-center gap-3">
+                            <div class="w-10 h-10 rounded-full bg-slate-100 text-slate-600 flex items-center justify-center font-bold border border-slate-200">${f.feirante_nome.charAt(0)}</div>
+                            <span class="font-semibold text-slate-800">${f.feirante_nome}</span>
+                        </td>
+                        <td class="px-6 py-4 text-emerald-600 font-semibold">Presente</td>
+                        <td class="px-6 py-4">${isPago ? `<span class="text-xs font-bold text-slate-600 uppercase">${f.forma_pagamento}</span>` : '<span class="text-xs text-slate-400">-</span>'}</td>
+                        <td class="px-6 py-4 font-bold text-slate-800">R$ ${f.valor_taxa.toFixed(2).replace('.', ',')}</td>
+                        <td class="px-6 py-4 text-right">${isPago ? `<span class="inline-flex items-center gap-1 bg-emerald-100 text-emerald-700 text-xs font-bold px-3 py-1.5 rounded-lg border border-emerald-200">Quitado</span>` : `<button class="bg-slate-800 hover:bg-slate-900 text-white text-xs font-bold px-4 py-2 rounded-lg transition-colors">Receber</button>`}</td>
+                    </tr>`;
             });
         }
 
-        // Função para o botão "Receber" funcionar
-        window.registrarPagamento = async function(id) {
-            const { error } = await supabaseClient
-                .from('financeiro')
-                .update({ status_pagamento: 'pago', forma_pagamento: 'dinheiro' })
-                .eq('id', id);
-
-            if (!error) {
-                carregarTabelaFeirantes(); 
-            } else {
-                alert('Erro ao registrar pagamento: ' + error.message);
-            }
-        }
-
-        // Inicia os dados ao carregar a página
         document.addEventListener('DOMContentLoaded', () => {
+            carregarFeiras();
             carregarTabelaFeirantes();
         });
-
-        // --- LÓGICA DE CRIAR E CARREGAR FEIRAS ---
-
-// 1. Abrir e fechar o modal
-window.abrirModalFeira = function() {
-    document.getElementById('modal-feira').classList.remove('hidden');
-}
-window.fecharModalFeira = function() {
-    document.getElementById('modal-feira').classList.add('hidden');
-}
-
-// 2. Salvar a nova feira no banco
-document.getElementById('form-feira').addEventListener('submit', async (e) => {
-    e.preventDefault();
-    
-    const data = document.getElementById('data-feira').value;
-    const local = document.getElementById('local-feira').value;
-    const taxa = parseFloat(document.getElementById('taxa-feira').value);
-
-    const { data: novaFeira, error } = await supabaseClient
-        .from('feiras')
-        .insert([{ data_feira: data, local: local, taxa_padrao: taxa }])
-        .select();
-
-    if (error) {
-        alert('Erro ao criar feira: ' + error.message);
-    } else {
-        alert('Feira criada com sucesso!');
-        fecharModalFeira();
-        document.getElementById('form-feira').reset();
-        carregarFeiras(); // Atualiza a lista na tela
-    }
-});
-
-// 3. Carregar as feiras do banco para o dropdown
-async function carregarFeiras() {
-    const select = document.getElementById('select-feira');
-    
-    // Busca todas as feiras, ordenando da mais recente para a mais antiga
-    const { data: feiras, error } = await supabaseClient
-        .from('feiras')
-        .select('*')
-        .order('data_feira', { ascending: false });
-
-    if (error) { console.error('Erro ao buscar feiras:', error); return; }
-
-    select.innerHTML = ''; // Limpa o "Carregando..."
-
-    if (feiras.length === 0) {
-        select.innerHTML = '<option value="">Nenhuma feira cadastrada</option>';
-        return;
-    }
-
-    feiras.forEach(f => {
-        // Formata a data de YYYY-MM-DD para DD/MM/YYYY
-        const dataFormatada = f.data_feira.split('-').reverse().join('/');
-        const option = document.createElement('option');
-        option.value = f.id; // O valor do select será o ID da feira
-        option.text = `Feira do dia ${dataFormatada} - ${f.local} (Taxa: R$ ${f.taxa_padrao})`;
-        select.appendChild(option);
-    });
-}
-
-// Chama a função para carregar as feiras quando a página abrir
-// (Adicione isso dentro do seu document.addEventListener('DOMContentLoaded'...))
-document.addEventListener('DOMContentLoaded', () => {
-    carregarFeiras();
-    // carregarTabelaFeirantes(); // (A função que já tínhamos)
-});
-
     </script>
 </body>
 </html>
