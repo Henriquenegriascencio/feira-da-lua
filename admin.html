@@ -26,7 +26,6 @@
             <div class="flex items-center gap-2 md:gap-4 text-sm font-semibold">
                 <a href="#" id="btn-tab-feiras" class="text-emerald-700 bg-emerald-50 px-4 py-2 rounded-lg flex items-center gap-2 transition-colors border border-emerald-200 cursor-pointer">Feiras</a>
                 <a href="#" id="btn-tab-feirantes" class="text-slate-500 hover:text-slate-900 flex items-center gap-2 transition-colors px-4 py-2 cursor-pointer">Feirantes</a>
-                <a href="#" id="btn-tab-relatorios" class="text-slate-500 hover:text-slate-900 flex items-center gap-2 transition-colors px-4 py-2 cursor-pointer">Relatórios</a>
                 <button id="btn-sair" class="text-red-600 hover:text-red-700 bg-red-50 hover:bg-red-100 border border-red-200 px-3 py-2 rounded-lg transition-colors ml-2 cursor-pointer">Sair</button>
             </div>
         </div>
@@ -34,69 +33,46 @@
 
     <main class="max-w-7xl mx-auto p-4 md:p-6 space-y-8 mt-2">
         
-        <!-- ========================================== -->
-        <!-- ABA 1: FEIRAS                              -->
-        <!-- ========================================== -->
+        <!-- ABA 1: FEIRAS -->
         <div id="tab-feiras" class="space-y-6">
             <div class="bg-white border border-slate-200 rounded-2xl p-6 flex flex-col md:flex-row justify-between items-center gap-4 shadow-sm">
                 <div>
-                    <h2 class="text-xl font-bold text-slate-900 flex items-center gap-2">📅 Gestão de Feiras e Eventos</h2>
+                    <h2 class="text-xl font-bold text-slate-900 flex items-center gap-2">📅 Gestão de Feiras</h2>
                     <p class="text-sm text-slate-500 mt-1">Selecione uma feira existente ou crie um novo evento.</p>
                 </div>
                 <div class="flex items-center gap-2 w-full md:w-auto">
-                    <select id="select-feira" class="bg-slate-50 border border-slate-300 text-slate-700 font-medium text-sm rounded-lg focus:ring-emerald-500 focus:border-emerald-500 block w-full md:w-72 p-3 outline-none transition-all">
+                    <select id="select-feira" class="bg-slate-50 border border-slate-300 text-slate-700 font-medium text-sm rounded-lg block w-full md:w-72 p-3 outline-none">
                         <option value="">Carregando feiras...</option>
                     </select>
-                    <button onclick="abrirModalFeira()" class="bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-3 px-5 rounded-lg whitespace-nowrap transition-colors flex items-center gap-2 shadow-sm">
-                        + Nova Feira
-                    </button>
+                    <button onclick="abrirModalFeira()" class="bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-3 px-5 rounded-lg whitespace-nowrap shadow-sm">+ Nova Feira</button>
                 </div>
             </div>
 
-            <!-- KPI Cards -->
             <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
                 <div class="bg-white border border-slate-200 rounded-xl p-5 shadow-sm">
-                    <p class="text-xs text-slate-500 font-semibold uppercase tracking-wider mb-2">Data da Feira</p>
+                    <p class="text-xs text-slate-500 font-semibold uppercase mb-2">Data da Feira</p>
                     <p class="text-2xl font-bold text-slate-900" id="kpi-data">--/--/----</p>
                 </div>
                 <div class="bg-white border border-slate-200 rounded-xl p-5 shadow-sm">
-                    <p class="text-xs text-slate-500 font-semibold uppercase tracking-wider mb-2">Taxa Padrão</p>
+                    <p class="text-xs text-slate-500 font-semibold uppercase mb-2">Taxa Padrão</p>
                     <p class="text-2xl font-bold text-slate-900" id="kpi-taxa">R$ 0,00</p>
                 </div>
                 <div class="bg-white border border-slate-200 rounded-xl p-5 shadow-sm">
-                    <p class="text-xs text-slate-500 font-semibold uppercase tracking-wider mb-2">Valor Total</p>
+                    <p class="text-xs text-slate-500 font-semibold uppercase mb-2">Valor Total</p>
                     <p class="text-2xl font-bold text-blue-600" id="kpi-receita-total">R$ 0,00</p>
                 </div>
                 <div class="bg-white border border-slate-200 rounded-xl p-5 shadow-sm">
-                    <p class="text-xs text-slate-500 font-semibold uppercase tracking-wider mb-2">Total Despesas</p>
+                    <p class="text-xs text-slate-500 font-semibold uppercase mb-2">Total Despesas</p>
                     <p class="text-2xl font-bold text-red-600" id="kpi-despesa-total">R$ 0,00</p>
                 </div>
-                <div class="bg-emerald-600 rounded-xl p-5 shadow-md relative overflow-hidden">
-                    <p class="text-xs text-emerald-100 font-semibold uppercase tracking-wider mb-2 relative z-10">Saldo Líquido</p>
-                    <p class="text-2xl font-bold text-white relative z-10" id="kpi-saldo">R$ 0,00</p>
-                </div>
-            </div>
-
-            <!-- Saldos Detalhados -->
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div class="bg-white border border-slate-200 rounded-xl p-5 flex justify-between items-center shadow-sm">
-                    <div>
-                        <p class="text-sm font-semibold text-emerald-600 mb-1">Saldo em Dinheiro</p>
-                        <p class="text-3xl font-bold text-slate-900" id="kpi-saldo-dinheiro">R$ 0,00</p>
-                    </div>
-                </div>
-                <div class="bg-white border border-slate-200 rounded-xl p-5 flex justify-between items-center shadow-sm">
-                    <div>
-                        <p class="text-sm font-semibold text-blue-600 mb-1">Saldo em Pix</p>
-                        <p class="text-3xl font-bold text-slate-900" id="kpi-saldo-pix">R$ 0,00</p>
-                    </div>
+                <div class="bg-emerald-600 rounded-xl p-5 shadow-md">
+                    <p class="text-xs text-emerald-100 font-semibold uppercase mb-2">Saldo Líquido</p>
+                    <p class="text-2xl font-bold text-white" id="kpi-saldo">R$ 0,00</p>
                 </div>
             </div>
         </div>
 
-        <!-- ========================================== -->
-        <!-- ABA 2: FEIRANTES DA FEIRA SELECIONADA      -->
-        <!-- ========================================== -->
+        <!-- ABA 2: FEIRANTES DA FEIRA -->
         <div id="tab-feirantes" class="hidden space-y-6">
             <div class="bg-white border border-slate-200 rounded-2xl overflow-hidden shadow-sm">
                 <div class="p-5 border-b border-slate-200 flex flex-col md:flex-row justify-between items-center gap-4 bg-slate-50/50">
@@ -104,7 +80,7 @@
                         <h3 class="text-lg font-bold text-slate-900">👥 Feirantes Inscritos</h3>
                         <p class="text-xs text-slate-500 font-medium mt-1" id="subtitulo-feira-selecionada">Selecione uma feira na aba anterior.</p>
                     </div>
-                    <button onclick="abrirModalVincular()" class="bg-slate-800 hover:bg-slate-900 text-white font-bold py-2.5 px-5 rounded-lg text-sm transition-colors shadow-sm flex items-center gap-2">
+                    <button onclick="abrirModalVincular()" class="bg-slate-800 hover:bg-slate-900 text-white font-bold py-2.5 px-5 rounded-lg text-sm shadow-sm">
                         + Vincular Feirante à Feira
                     </button>
                 </div>
@@ -114,7 +90,7 @@
                             <tr>
                                 <th class="px-6 py-4 font-semibold">Feirante</th>
                                 <th class="px-6 py-4 font-semibold">Presença</th>
-                                <th class="px-6 py-4 font-semibold">Status Pagto</th>
+                                <th class="px-6 py-4 font-semibold">Pagamento</th>
                                 <th class="px-6 py-4 font-semibold">Valor Taxa</th>
                                 <th class="px-6 py-4 font-semibold text-right">Ações</th>
                             </tr>
@@ -127,63 +103,48 @@
             </div>
         </div>
 
-        <!-- ========================================== -->
-        <!-- ABA 3: RELATÓRIOS                          -->
-        <!-- ========================================== -->
-        <div id="tab-relatorios" class="hidden space-y-6">
-            <div class="bg-white border border-slate-200 rounded-2xl p-6 flex flex-col md:flex-row justify-between items-center gap-4 shadow-sm">
-                <div>
-                    <h2 class="text-xl font-bold text-slate-900 flex items-center gap-2">📊 Relatório Geral</h2>
-                    <p class="text-sm text-slate-500 mt-1">Prestação de contas consolidada.</p>
-                </div>
-                <button onclick="window.print()" class="bg-slate-800 hover:bg-slate-900 text-white font-bold py-2.5 px-6 rounded-lg flex items-center gap-2 transition-all shadow-sm">
-                    Imprimir
-                </button>
-            </div>
-        </div>
-
     </main>
 
-    <!-- MODAL NOVA FEIRA -->
+    <!-- MODAIS -->
+    <!-- 1. Nova Feira -->
     <div id="modal-feira" class="hidden fixed inset-0 bg-slate-900/50 backdrop-blur-sm flex items-center justify-center z-[100] p-4">
         <div class="bg-white p-6 rounded-2xl w-full max-w-md shadow-xl">
             <h3 class="text-xl font-bold text-slate-900 mb-4">Criar Nova Feira</h3>
             <form id="form-feira" class="space-y-4">
                 <div>
-                    <label class="block text-xs font-semibold text-slate-600 mb-1">Data da Feira</label>
-                    <input type="date" id="data-feira" required class="w-full bg-slate-50 border border-slate-300 text-slate-800 p-3 rounded-lg outline-none focus:border-emerald-500">
+                    <label class="block text-xs font-semibold text-slate-600 mb-1">Data</label>
+                    <input type="date" id="data-feira" required class="w-full bg-slate-50 border border-slate-300 p-3 rounded-lg outline-none focus:border-emerald-500">
                 </div>
                 <div>
                     <label class="block text-xs font-semibold text-slate-600 mb-1">Local</label>
-                    <input type="text" id="local-feira" placeholder="Ex: Praça Central" required class="w-full bg-slate-50 border border-slate-300 text-slate-800 p-3 rounded-lg outline-none focus:border-emerald-500">
+                    <input type="text" id="local-feira" required class="w-full bg-slate-50 border border-slate-300 p-3 rounded-lg outline-none focus:border-emerald-500">
                 </div>
                 <div>
                     <label class="block text-xs font-semibold text-slate-600 mb-1">Taxa Padrão (R$)</label>
-                    <input type="number" step="0.01" id="taxa-feira" value="55.00" required class="w-full bg-slate-50 border border-slate-300 text-slate-800 p-3 rounded-lg outline-none focus:border-emerald-500">
+                    <input type="number" step="0.01" id="taxa-feira" value="55.00" required class="w-full bg-slate-50 border border-slate-300 p-3 rounded-lg outline-none focus:border-emerald-500">
                 </div>
                 <div class="flex justify-end gap-3 mt-6">
                     <button type="button" onclick="fecharModalFeira()" class="text-slate-500 font-medium px-4 py-2">Cancelar</button>
-                    <button type="submit" class="bg-emerald-600 hover:bg-emerald-700 text-white font-bold px-6 py-2 rounded-lg shadow-sm">Salvar Feira</button>
+                    <button type="submit" class="bg-emerald-600 text-white font-bold px-6 py-2 rounded-lg">Salvar</button>
                 </div>
             </form>
         </div>
     </div>
 
-    <!-- MODAL VINCULAR FEIRANTE -->
+    <!-- 2. Vincular Feirante -->
     <div id="modal-vincular" class="hidden fixed inset-0 bg-slate-900/50 backdrop-blur-sm flex items-center justify-center z-[100] p-4">
         <div class="bg-white p-6 rounded-2xl w-full max-w-md shadow-xl">
             <h3 class="text-xl font-bold text-slate-900 mb-4">Vincular Feirante</h3>
-            <p class="text-xs text-slate-500 mb-4">Selecione um feirante cadastrado no sistema para inscrevê-lo nesta feira.</p>
             <form id="form-vincular" class="space-y-4">
                 <div>
                     <label class="block text-xs font-semibold text-slate-600 mb-1">Feirante</label>
-                    <select id="select-novo-feirante" required class="w-full bg-slate-50 border border-slate-300 text-slate-800 p-3 rounded-lg outline-none focus:border-emerald-500">
-                        <option value="">Carregando feirantes...</option>
+                    <select id="select-novo-feirante" required class="w-full bg-slate-50 border border-slate-300 p-3 rounded-lg outline-none focus:border-emerald-500">
+                        <option value="">Carregando...</option>
                     </select>
                 </div>
                 <div class="flex justify-end gap-3 mt-6">
                     <button type="button" onclick="fecharModalVincular()" class="text-slate-500 font-medium px-4 py-2">Cancelar</button>
-                    <button type="submit" class="bg-slate-800 hover:bg-slate-900 text-white font-bold px-6 py-2 rounded-lg shadow-sm">Inscrever</button>
+                    <button type="submit" class="bg-slate-800 text-white font-bold px-6 py-2 rounded-lg">Inscrever</button>
                 </div>
             </form>
         </div>
@@ -200,71 +161,55 @@
         let idDaFeiraAtual = null;
         let dataDaFeiraAtual = "";
 
-        // NAVEGAÇÃO DE ABAS
+        // NAVEGAÇÃO
         const btnFeiras = document.getElementById('btn-tab-feiras');
         const btnFeirantes = document.getElementById('btn-tab-feirantes');
-        const btnRelatorios = document.getElementById('btn-tab-relatorios');
         const tabFeiras = document.getElementById('tab-feiras');
         const tabFeirantes = document.getElementById('tab-feirantes');
-        const tabRelatorios = document.getElementById('tab-relatorios');
 
         function esconderAbas() {
-            tabFeiras.classList.add('hidden');
-            tabFeirantes.classList.add('hidden');
-            tabRelatorios.classList.add('hidden');
-            const inativo = 'text-slate-500 hover:text-slate-900 flex items-center gap-2 transition-colors px-4 py-2 cursor-pointer';
-            btnFeiras.className = inativo;
-            btnFeirantes.className = inativo;
-            btnRelatorios.className = inativo;
+            tabFeiras.classList.add('hidden'); tabFeirantes.classList.add('hidden');
+            btnFeiras.className = 'text-slate-500 hover:text-slate-900 flex items-center gap-2 transition-colors px-4 py-2 cursor-pointer';
+            btnFeirantes.className = 'text-slate-500 hover:text-slate-900 flex items-center gap-2 transition-colors px-4 py-2 cursor-pointer';
         }
         function ativarAba(btn) {
             btn.className = 'text-emerald-700 bg-emerald-50 px-4 py-2 rounded-lg flex items-center gap-2 transition-colors border border-emerald-200 cursor-pointer';
         }
 
         btnFeiras.addEventListener('click', (e) => { e.preventDefault(); esconderAbas(); tabFeiras.classList.remove('hidden'); ativarAba(btnFeiras); });
-        btnFeirantes.addEventListener('click', (e) => { e.preventDefault(); esconderAbas(); tabFeirantes.classList.remove('hidden'); ativarAba(btnFeirantes); });
-        btnRelatorios.addEventListener('click', (e) => { e.preventDefault(); esconderAbas(); tabRelatorios.classList.remove('hidden'); ativarAba(btnRelatorios); });
+        btnFeirantes.addEventListener('click', (e) => { e.preventDefault(); esconderAbas(); tabFeirantes.classList.remove('hidden'); ativarAba(btnFeirantes); carregarFeirantesDaFeira(); });
 
         // LOGOUT
         document.getElementById('btn-sair').addEventListener('click', async (e) => {
             e.preventDefault(); await supabaseClient.auth.signOut(); window.location.href = 'index.html';
         });
 
-        // MODAL FEIRA
+        // FEIRAS
         window.abrirModalFeira = () => document.getElementById('modal-feira').classList.remove('hidden');
         window.fecharModalFeira = () => document.getElementById('modal-feira').classList.add('hidden');
 
         document.getElementById('form-feira').addEventListener('submit', async (e) => {
             e.preventDefault();
-            const btn = e.target.querySelector('button[type="submit"]');
-            btn.innerText = 'Salvando...';
-
             const { error } = await supabaseClient.from('feiras').insert([{
                 data_feira: document.getElementById('data-feira').value,
                 local: document.getElementById('local-feira').value,
                 taxa_padrao: parseFloat(document.getElementById('taxa-feira').value)
             }]);
-
-            btn.innerText = 'Salvar Feira';
-            if (error) { alert('Erro: ' + error.message); } 
-            else {
-                fecharModalFeira(); document.getElementById('form-feira').reset(); carregarFeiras(); 
-            }
+            if (error) alert('Erro: ' + error.message);
+            else { fecharModalFeira(); document.getElementById('form-feira').reset(); carregarFeiras(); }
         });
 
-        // CARREGAR FEIRAS (DROPDOWN)
         async function carregarFeiras() {
             const select = document.getElementById('select-feira');
             const { data: feiras } = await supabaseClient.from('feiras').select('*').order('data_feira', { ascending: false });
+            select.innerHTML = '<option value="">Selecione...</option>';
             
-            select.innerHTML = '<option value="">Selecione uma feira...</option>';
             if (feiras.length === 0) return;
 
             feiras.forEach(f => {
                 const dataF = f.data_feira.split('-').reverse().join('/');
                 select.innerHTML += `<option value="${f.id}">Feira de ${dataF} - ${f.local}</option>`;
             });
-
             select.value = feiras[0].id;
             carregarDadosFeira(feiras[0].id);
         }
@@ -273,83 +218,70 @@
             if (e.target.value) carregarDadosFeira(e.target.value);
         });
 
-        // CARREGAR DADOS DA FEIRA
         async function carregarDadosFeira(feiraId) {
             idDaFeiraAtual = feiraId;
-
             const { data: feira } = await supabaseClient.from('feiras').select('*').eq('id', feiraId).single();
             if (feira) {
-                dataDaFeiraAtual = feira.data_feira.split('-').reverse().join('/');
-                document.getElementById('kpi-data').innerText = dataDaFeiraAtual;
+                dataDaFeiraAtual = feira.data_feira;
+                document.getElementById('kpi-data').innerText = feira.data_feira.split('-').reverse().join('/');
                 document.getElementById('kpi-taxa').innerText = `R$ ${feira.taxa_padrao.toFixed(2).replace('.', ',')}`;
-                document.getElementById('subtitulo-feira-selecionada').innerText = `Gerenciando a feira do dia ${dataDaFeiraAtual}`;
+                document.getElementById('subtitulo-feira-selecionada').innerText = `Gerenciando a feira do dia ${feira.data_feira.split('-').reverse().join('/')}`;
             }
-
-            // Atualiza tabela de feirantes desta feira
             carregarFeirantesDaFeira();
-            
-            // (Aqui entrariam os cálculos de receitas e despesas... omitidos para focar na sua dúvida)
         }
 
-        // =======================================================
-        // LÓGICA DE VINCULAR E GERENCIAR FEIRANTES
-        // =======================================================
-
-        // 1. Abrir Modal e listar todos os feirantes do sistema
+        // VINCULAR FEIRANTE (Agora busca da tabela feirantes que tem dados completos)
         window.abrirModalVincular = async () => {
-            if (!idDaFeiraAtual) { alert("Selecione uma feira primeiro na aba Feiras."); return; }
-            
+            if (!idDaFeiraAtual) { alert("Selecione uma feira primeiro."); return; }
             const select = document.getElementById('select-novo-feirante');
             select.innerHTML = '<option value="">Carregando...</option>';
 
-            // Busca todos os feirantes cadastrados (Tabela 'feirantes')
             const { data: feirantes } = await supabaseClient.from('feirantes').select('*').order('nome_barraca');
 
-            select.innerHTML = '<option value="">Selecione um feirante...</option>';
-            feirantes.forEach(f => {
-                select.innerHTML += `<option value="${f.id}" data-nome="${f.nome_barraca}">${f.nome_barraca}</option>`;
-            });
-
+            select.innerHTML = '<option value="">Selecione...</option>';
+            if (feirantes.length === 0) {
+                select.innerHTML = '<option value="">Nenhum feirante cadastrado. Crie um usuário no Supabase.</option>';
+            } else {
+                feirantes.forEach(f => {
+                    select.innerHTML += `<option value="${f.id}" data-nome="${f.nome_barraca}">${f.nome_barraca}</option>`;
+                });
+            }
             document.getElementById('modal-vincular').classList.remove('hidden');
         }
-
         window.fecharModalVincular = () => document.getElementById('modal-vincular').classList.add('hidden');
 
-        // 2. Salvar a inscrição na tabela financeiro
- // CÓDIGO NOVO (Puxa a data e envia no Insert)
-document.getElementById('form-vincular').addEventListener('submit', async (e) => {
-    e.preventDefault();
-    const select = document.getElementById('select-novo-feirante');
-    const feiranteId = select.value;
-    const feiranteNome = select.options[select.selectedIndex].getAttribute('data-nome');
-    if (!feiranteId) return;
+        document.getElementById('form-vincular').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const select = document.getElementById('select-novo-feirante');
+            const feiranteId = select.value;
+            const feiranteNome = select.options[select.selectedIndex].getAttribute('data-nome');
+            if (!feiranteId) return;
 
-    // A MÁGICA AQUI: Também estamos pedindo a data_feira
-    const { data: feira } = await supabaseClient.from('feiras').select('taxa_padrao, data_feira').eq('id', idDaFeiraAtual).single();
+            const { data: feira } = await supabaseClient.from('feiras').select('taxa_padrao').eq('id', idDaFeiraAtual).single();
 
-    const { error } = await supabaseClient.from('financeiro').insert([{
-        feira_id: idDaFeiraAtual,
-        feirante_id: feiranteId,
-        feirante_nome: feiranteNome,
-        data_feira: feira.data_feira, // <--- ADICIONADO AQUI!
-        valor_taxa: feira.taxa_padrao,
-        status_pagamento: 'pendente',
-        status_presenca: 'pendente'
-    }]);
+            const { error } = await supabaseClient.from('financeiro').insert([{
+                feira_id: idDaFeiraAtual,
+                feirante_id: feiranteId,
+                feirante_nome: feiranteNome,
+                data_feira: dataDaFeiraAtual,
+                valor_taxa: feira.taxa_padrao,
+                status_pagamento: 'pendente',
+                status_presenca: 'pendente'
+            }]);
 
-    if (error) alert('Erro: ' + error.message);
-    else { fecharModalVincular(); carregarFeirantesDaFeira(); }
-});
+            if (error) alert('Erro: ' + error.message);
+            else { fecharModalVincular(); carregarFeirantesDaFeira(); }
+        });
 
-        // 3. Carregar tabela de feirantes APENAS da feira selecionada
+        // TABELA DE FEIRANTES DA FEIRA
         async function carregarFeirantesDaFeira() {
+            if (!idDaFeiraAtual) return;
             const tbody = document.getElementById('tabela-feirantes-corpo');
             tbody.innerHTML = '<tr><td colspan="5" class="px-6 py-4 text-center text-slate-400">Buscando...</td></tr>';
 
-            // Filtra pelo ID da feira!
             const { data: registros } = await supabaseClient.from('financeiro').select('*').eq('feira_id', idDaFeiraAtual);
-            
             tbody.innerHTML = '';
+            
             if (!registros || registros.length === 0) {
                 tbody.innerHTML = '<tr><td colspan="5" class="px-6 py-8 text-center text-slate-400">Nenhum feirante vinculado a esta feira ainda.</td></tr>';
                 return;
@@ -362,26 +294,23 @@ document.getElementById('form-vincular').addEventListener('submit', async (e) =>
 
                 tbody.innerHTML += `
                     <tr class="hover:bg-slate-50 transition-colors">
-                        <td class="px-6 py-4 flex items-center gap-3">
-                            <div class="w-8 h-8 rounded-full bg-slate-100 text-slate-600 flex items-center justify-center font-bold text-xs border border-slate-200">${r.feirante_nome.charAt(0)}</div>
-                            <span class="font-semibold text-slate-800">${r.feirante_nome}</span>
-                        </td>
+                        <td class="px-6 py-4 font-semibold text-slate-800">${r.feirante_nome}</td>
                         <td class="px-6 py-4">
                             ${isPresente ? '<span class="text-xs font-bold text-emerald-600">✓ Presente</span>' : 
                               isFalta ? '<span class="text-xs font-bold text-red-600">✗ Falta</span>' : 
                               `<div class="flex gap-2">
-                                  <button onclick="marcarPresenca(${r.id}, 'presente')" class="text-[10px] bg-emerald-100 text-emerald-700 px-2 py-1 rounded font-bold hover:bg-emerald-200">Compareceu</button>
-                                  <button onclick="marcarPresenca(${r.id}, 'falta')" class="text-[10px] bg-red-100 text-red-700 px-2 py-1 rounded font-bold hover:bg-red-200">Faltou</button>
+                                  <button onclick="marcarPresenca(${r.id}, 'presente')" class="text-[10px] bg-emerald-100 text-emerald-700 px-2 py-1 rounded font-bold">Compareceu</button>
+                                  <button onclick="marcarPresenca(${r.id}, 'falta')" class="text-[10px] bg-red-100 text-red-700 px-2 py-1 rounded font-bold">Faltou</button>
                                </div>`}
                         </td>
                         <td class="px-6 py-4">
-                            ${isPago ? `<span class="text-[10px] font-bold bg-slate-100 text-slate-700 px-2 py-1 rounded border border-slate-200 uppercase">${r.forma_pagamento}</span>` : '<span class="text-[10px] font-bold bg-amber-100 text-amber-700 px-2 py-1 rounded border border-amber-200 uppercase">Pendente</span>'}
+                            ${isPago ? `<span class="text-[10px] font-bold bg-slate-100 text-slate-700 px-2 py-1 rounded border uppercase">${r.forma_pagamento}</span>` : '<span class="text-[10px] font-bold bg-amber-100 text-amber-700 px-2 py-1 rounded border uppercase">Pendente</span>'}
                         </td>
                         <td class="px-6 py-4 font-bold text-slate-800">R$ ${r.valor_taxa.toFixed(2).replace('.', ',')}</td>
                         <td class="px-6 py-4 text-right">
                             ${isPago 
                                 ? `<button onclick="desfazerPagamento(${r.id})" class="text-slate-400 hover:text-red-500 text-xs">Desfazer</button>`
-                                : `<button onclick="registrarPagamento(${r.id})" class="bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold px-3 py-1.5 rounded-lg shadow-sm">Receber</button>`
+                                : `<button onclick="registrarPagamento(${r.id})" class="bg-emerald-600 text-white text-xs font-bold px-3 py-1.5 rounded-lg">Receber</button>`
                             }
                         </td>
                     </tr>
@@ -389,27 +318,11 @@ document.getElementById('form-vincular').addEventListener('submit', async (e) =>
             });
         }
 
-        // 4. Funções de Ação na Tabela
-        window.marcarPresenca = async (id, status) => {
-            await supabaseClient.from('financeiro').update({ status_presenca: status }).eq('id', id);
-            carregarFeirantesDaFeira();
-        }
+        window.marcarPresenca = async (id, status) => { await supabaseClient.from('financeiro').update({ status_presenca: status }).eq('id', id); carregarFeirantesDaFeira(); }
+        window.registrarPagamento = async (id) => { await supabaseClient.from('financeiro').update({ status_pagamento: 'pago', forma_pagamento: 'dinheiro' }).eq('id', id); carregarFeirantesDaFeira(); }
+        window.desfazerPagamento = async (id) => { await supabaseClient.from('financeiro').update({ status_pagamento: 'pendente', forma_pagamento: null }).eq('id', id); carregarFeirantesDaFeira(); }
 
-        window.registrarPagamento = async (id) => {
-            // Para simplificar, vamos assumir Dinheiro ao clicar em receber direto na tabela
-            await supabaseClient.from('financeiro').update({ status_pagamento: 'pago', forma_pagamento: 'dinheiro' }).eq('id', id);
-            carregarFeirantesDaFeira();
-        }
-
-        window.desfazerPagamento = async (id) => {
-            await supabaseClient.from('financeiro').update({ status_pagamento: 'pendente', forma_pagamento: null }).eq('id', id);
-            carregarFeirantesDaFeira();
-        }
-
-        // INICIALIZAÇÃO
-        document.addEventListener('DOMContentLoaded', () => {
-            carregarFeiras();
-        });
+        document.addEventListener('DOMContentLoaded', () => { carregarFeiras(); });
     </script>
 </body>
 </html>
