@@ -316,33 +316,30 @@
         window.fecharModalVincular = () => document.getElementById('modal-vincular').classList.add('hidden');
 
         // 2. Salvar a inscrição na tabela financeiro
-        document.getElementById('form-vincular').addEventListener('submit', async (e) => {
-            e.preventDefault();
-            const select = document.getElementById('select-novo-feirante');
-            const feiranteId = select.value;
-            const feiranteNome = select.options[select.selectedIndex].getAttribute('data-nome');
+ // CÓDIGO NOVO (Puxa a data e envia no Insert)
+document.getElementById('form-vincular').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const select = document.getElementById('select-novo-feirante');
+    const feiranteId = select.value;
+    const feiranteNome = select.options[select.selectedIndex].getAttribute('data-nome');
+    if (!feiranteId) return;
 
-            if (!feiranteId) return;
+    // A MÁGICA AQUI: Também estamos pedindo a data_feira
+    const { data: feira } = await supabaseClient.from('feiras').select('taxa_padrao, data_feira').eq('id', idDaFeiraAtual).single();
 
-            // Pega a taxa padrão da feira atual
-            const { data: feira } = await supabaseClient.from('feiras').select('taxa_padrao').eq('id', idDaFeiraAtual).single();
+    const { error } = await supabaseClient.from('financeiro').insert([{
+        feira_id: idDaFeiraAtual,
+        feirante_id: feiranteId,
+        feirante_nome: feiranteNome,
+        data_feira: feira.data_feira, // <--- ADICIONADO AQUI!
+        valor_taxa: feira.taxa_padrao,
+        status_pagamento: 'pendente',
+        status_presenca: 'pendente'
+    }]);
 
-            // Insere no financeiro com status pendente
-            const { error } = await supabaseClient.from('financeiro').insert([{
-                feira_id: idDaFeiraAtual,
-                feirante_id: feiranteId,
-                feirante_nome: feiranteNome,
-                valor_taxa: feira.taxa_padrao,
-                status_pagamento: 'pendente',
-                status_presenca: 'pendente'
-            }]);
-
-            if (error) alert('Erro: ' + error.message);
-            else {
-                fecharModalVincular();
-                carregarFeirantesDaFeira();
-            }
-        });
+    if (error) alert('Erro: ' + error.message);
+    else { fecharModalVincular(); carregarFeirantesDaFeira(); }
+});
 
         // 3. Carregar tabela de feirantes APENAS da feira selecionada
         async function carregarFeirantesDaFeira() {
